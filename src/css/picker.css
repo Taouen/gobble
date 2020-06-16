@@ -1,0 +1,9 @@
+body{
+	background: #333;
+}
+
+.card-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+}
+

@@ -1,9 +1,4 @@
-body{
-	background: #333;
-}
-
-.card-wrapper {
+.test {
 	display: flex;
 	flex-wrap: wrap;
 }
-

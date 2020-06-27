@@ -34,7 +34,12 @@ class Picker extends React.Component {
     const box = [...this.state.box];
     box.push(key);
     this.setState({ box });
-    // I think I can leave this as is, and use the value of each key to tell react how many of that item to render
+  };
+
+  removeFromBox = (key) => {
+    const box = [...this.state.box];
+    box.splice(box.indexOf(key), 1);
+    this.setState({ box });
   };
 
   render() {
@@ -57,7 +62,11 @@ class Picker extends React.Component {
         {keys.length === 0 ? (
           <Button onClick={this.loadSampleRecipes}>Load Sample Recipes</Button>
         ) : null}
-        <Box contents={this.state.box} recipes={this.state.recipes} />
+        <Box
+          contents={this.state.box}
+          recipes={this.state.recipes}
+          removeFromBox={this.removeFromBox}
+        />
       </Wrapper>
     );
   }

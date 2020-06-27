@@ -23,6 +23,9 @@ class BoxItem extends React.Component {
       <BoxCard>
         <Image src={image} height="100px" width="100px" alt={title} />
         {title}
+        <span onClick={() => this.props.removeFromBox(this.props.index)}>
+          &times;
+        </span>
       </BoxCard>
     );
   }

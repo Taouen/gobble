@@ -8,14 +8,22 @@ const BoxWrapper = styled.div`
   border: 1px solid black;
   background: #ccc;
 `;
-// attempting to decosnstruct the box items into a separate component to be rendered multiple times, just not sure how to go about the multiple renders
+
 class Box extends React.Component {
   render() {
-    const orderIds = Object.keys(this.props.contents);
+    const orderIds = [...this.props.contents];
 
     return (
       <BoxWrapper>
-        <BoxItem />
+        {orderIds.map((key) => {
+          return (
+            <BoxItem
+              key={key + Math.random()}
+              title={this.props.recipes[key].title}
+              image={this.props.recipes[key].image}
+            />
+          );
+        })}
       </BoxWrapper>
     );
   }

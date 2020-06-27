@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 class Picker extends React.Component {
   state = {
     recipes: {},
-    box: {},
+    box: [],
   };
 
   loadSampleRecipes = () => {
@@ -31,8 +31,8 @@ class Picker extends React.Component {
   };
 
   addToBox = (key) => {
-    const box = { ...this.state.box };
-    box[key] = box[key] + 1 || 1;
+    const box = [...this.state.box];
+    box.push(key);
     this.setState({ box });
     // I think I can leave this as is, and use the value of each key to tell react how many of that item to render
   };

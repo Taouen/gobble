@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import BoxItem from './BoxItem';
 import '../css/reset.css';
+import { v4 as uuid } from 'uuid';
 
 const BoxWrapper = styled.div`
   padding: 10px;
@@ -12,16 +13,17 @@ const BoxWrapper = styled.div`
 class Box extends React.Component {
   render() {
     const orderIds = Object.keys(this.props.contents);
-
+    console.log(orderIds);
     return (
       <BoxWrapper>
         {orderIds.map((key) => {
+          const id = uuid();
           return (
             <BoxItem
-              key={key + Math.random()}
-              index={orderIds.lastIndexOf(key)}
-              title={this.props.recipes[key].title}
-              image={this.props.recipes[key].image}
+              key={id}
+              index={key}
+              title={this.props.recipes[orderIds.indexOf(key)].title}
+              image={this.props.recipes[orderIds.indexOf(key)].image}
               removeFromBox={this.props.removeFromBox}
             />
           );

@@ -31,14 +31,16 @@ class Picker extends React.Component {
   };
 
   addToBox = (key) => {
-    const box = [...this.state.box];
-    box.push(key);
+    const box = { ...this.state.box };
+    // box.push(key); this works if box state is an array
+    box[key] = box[key] + 1 || 1;
     this.setState({ box });
   };
 
   removeFromBox = (key) => {
-    const box = [...this.state.box];
-    box.splice(box.indexOf(key), 1);
+    const box = { ...this.state.box };
+    // box.splice(key, 1); this works if box state is an array
+    delete box[key];
     this.setState({ box });
   };
 

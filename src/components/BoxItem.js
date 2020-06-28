@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const BoxCard = styled.div`
-  display: grid;
-  grid-template-columns: 100px 1fr;
+  display: flex;
+  justify-content: space-between;
   padding: 5px;
   place-items: center;
   background: #999;
@@ -15,6 +15,10 @@ const Image = styled.img`
   grid-column: 1 / 1;
 `;
 
+const RemoveButton = styled.span`
+  cursor: pointer;
+`;
+
 class BoxItem extends React.Component {
   render() {
     const { title, image } = this.props;
@@ -23,9 +27,9 @@ class BoxItem extends React.Component {
       <BoxCard>
         <Image src={image} height="100px" width="100px" alt={title} />
         {title}
-        <span onClick={() => this.props.removeFromBox(this.props.index)}>
+        <RemoveButton onClick={() => this.props.removeFromBox(this.index)}>
           &times;
-        </span>
+        </RemoveButton>
       </BoxCard>
     );
   }

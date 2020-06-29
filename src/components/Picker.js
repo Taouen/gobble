@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import RecipeCard from './RecipeCard';
 import sampleRecipes from '../recipes';
-import { v4 as uuid } from 'uuid';
 import Box from './Box';
 import '../css/picker.css';
 
@@ -42,10 +41,10 @@ class Picker extends React.Component {
   addToBox = (key) => {
     // add the id generation here, and add the resultant id to the box object below
     const box = [...this.state.box];
-    console.log(key);
-    const id = uuid();
-    // box.push(key); this works if box state is an array
-    box.push(key); // this is an array function i think, you can add a prop to the object more easily like i think box.id = id;
+    const recipes = [...this.state.recipes];
+    /* Okay, here is where I'm currently having a problem. The key being supplied to the function is the index of the recipe related to the card. Everything appears to be operating properly, except that the wrong title and image are being rendered into the BoxItem component. */
+    console.log(recipes[key]);
+    box.push(recipes[key]);
 
     this.setState({ box });
   };
@@ -53,21 +52,17 @@ class Picker extends React.Component {
   removeFromBox = (key) => {
     // detect the key here and use it to select the id, not the key (from the keys.map in the render fundtion)
     const box = [...this.state.box];
-    // box.splice(key, 1); this works if box state is an array
     delete box[key];
     this.setState({ box });
   };
 
   render() {
-    // this feels a bit strange, like it's duplicating something... i feel like the menu of recipes ought be an array in the first place
     const originalKeys = [...this.state.recipes];
-    // const keys = Object.keys(originalKeys);
 
     return (
       <Wrapper>
         <div className="test">
           {originalKeys.map((object) => {
-            //const id = uuid(); <-- this is generating the key when it's in the menu, not when it's added to the box : correct, That's why its commented out haha
             const recipe = originalKeys.indexOf(object);
             return (
               <RecipeCard

@@ -12,20 +12,17 @@ const BoxWrapper = styled.div`
 
 class Box extends React.Component {
   render() {
-    const orderIds = [...this.props.contents];
+    const contents = this.props.contents;
 
     return (
       <BoxWrapper>
-        {orderIds.map((recipe) => {
-          const id = uuid();
+        {contents.map((recipe, i) => {
           return (
             <BoxItem
-              key={id}
-              index={id}
-              // I know that the lines below this are wrong. The orderIds.indexOf(recipe) part will always have the wrong index, as it is pulling the index from the box state instead of the recipes state, but I can't figure out how to get the index of the recipe from recipes array.
-              title={this.props.recipes[orderIds.indexOf(recipe)].title}
-              image={this.props.recipes[orderIds.indexOf(recipe)].image}
-              removeFromBox={this.props.removeFromBox}
+              key={i}
+              title={recipe.title}
+              image={recipe.image}
+              removeFromBox={() => this.props.removeFromBox(recipe.identifier)}
             />
           );
         })}

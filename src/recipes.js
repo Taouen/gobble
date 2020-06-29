@@ -1,5 +1,6 @@
 const sampleRecipes = [
   {
+    id: '123',
     title: 'Tennessee Meatloaf',
     protein: 'Beef',
     tags: ['beef', 'american', 'dinner'],
@@ -7,6 +8,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '124',
     title: 'Restaurant-Style Buffalo Wings',
     protein: 'Chicken',
     tags: ['chicken', 'american', 'appetizer', 'dinner'],
@@ -14,6 +16,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '125',
     title: 'Chicken Parmesan',
     protein: 'Chicken',
     tags: ['chicken', 'italian', 'dinner'],
@@ -21,6 +24,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '126',
     title: 'Beef and Broccoli',
     protein: 'Beef',
     tags: ['beef', 'chinese', 'dinner'],
@@ -28,6 +32,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '127',
     title: 'Chicken Enchiladas',
     protein: 'Chicken',
     tags: ['chicken', 'mexican', 'dinner'],
@@ -35,6 +40,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '128',
     title: 'Baked Lemon Pepper Salmon',
     protein: 'Fish',
     tags: ['salmon', 'dinner'],
@@ -42,6 +48,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '129',
     title: 'Crustless Spinach Quiche',
     protein: 'Egg',
     tags: ['egg', 'french', 'main'],
@@ -49,6 +56,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '130',
     title: 'Fried Mozzarella Puffs',
     protein: 'Vegetarian',
     tags: ['vegetarian', 'italian', 'appetizer'],
@@ -56,6 +64,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '131',
     title: 'Chicken Fettuccine Alfredo',
     protein: 'Chicken',
     tags: ['chicken', 'italian', 'dinner'],
@@ -63,6 +72,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '132',
     title: 'Taco Pizza',
     protein: 'Beef',
     tags: ['beef', 'american', 'dinner'],
@@ -70,6 +80,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '133',
     title: 'Classic Waffles',
     protein: 'Vegetarian',
     tags: ['vegetarian', 'breakfast'],
@@ -77,6 +88,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '134',
     title: 'Shrimp Scampi',
     protein: 'Fish',
     tags: ['shrimp', 'italian', 'dinner'],
@@ -84,6 +96,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '135',
     title: 'Sheet Pan Apple Crisp',
     protein: 'Vegetarian',
     tags: ['american', 'dessert'],
@@ -91,6 +104,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '136',
     title: 'Pork Souvlaki',
     protein: 'Pork',
     tags: ['pork', 'greek', 'dinner'],
@@ -98,6 +112,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '137',
     title: 'Thai Steamed Mussels',
     protein: 'Fish',
     tags: ['mussels', 'thai', 'dinner', 'appetizer'],
@@ -105,6 +120,7 @@ const sampleRecipes = [
   },
 
   {
+    id: '138',
     title: 'Take Out Style Fried Rice',
     protein: 'Vegetarian',
     tags: ['vegetarian', 'chinese', 'side', 'dinner'],

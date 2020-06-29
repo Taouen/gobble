@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { v1 as uuidv1 } from 'uuid';
 import RecipeCard from './RecipeCard';
 import sampleRecipes from '../recipes';
 import Box from './Box';
@@ -29,54 +30,61 @@ const Wrapper = styled.div`
 */
 
 class Picker extends React.Component {
-  state = {
-    recipes: [],
-    box: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipes: [],
+      box: [],
+    };
+
+    this.addToBox = this.addToBox.bind(this);
+    this.removeFromBox = this.removeFromBox.bind(this);
+  }
 
   loadSampleRecipes = () => {
     this.setState({ recipes: sampleRecipes });
   };
 
-  addToBox = (key) => {
-    // add the id generation here, and add the resultant id to the box object below
-    const box = [...this.state.box];
-    const recipes = [...this.state.recipes];
-    /* Okay, here is where I'm currently having a problem. The key being supplied to the function is the index of the recipe related to the card. Everything appears to be operating properly, except that the wrong title and image are being rendered into the BoxItem component. */
-    console.log(recipes[key]);
-    box.push(recipes[key]);
-
+  addToBox = (id) => {
+    let box = this.state.box;
+    let index = this.state.recipes.findIndex(recipe => recipe.id === id);
+    let uuid = uuidv1();
+    let recipe = this.state.recipes[index];
+    recipe.identifier = uuid;
+    console.log(uuid);
+    console.log(recipe.identifier);
+    box.push(recipe);
     this.setState({ box });
   };
 
-  removeFromBox = (key) => {
-    // detect the key here and use it to select the id, not the key (from the keys.map in the render fundtion)
-    const box = [...this.state.box];
-    delete box[key];
-    this.setState({ box });
+  removeFromBox = (identifier) => {
+    console.log(identifier);
+    let index = this.state.box.findIndex(i => i.identifier === identifier);
+    console.log(index);
+    let box = this.state.box;
+    const newBox = box.splice(index, 1);
+    this.setState({ newBox });
   };
 
   render() {
-    const originalKeys = [...this.state.recipes];
+    const { recipes }  = this.state;
 
     return (
       <Wrapper>
         <div className="test">
-          {originalKeys.map((object) => {
-            const recipe = originalKeys.indexOf(object);
+          {recipes.map((recipe) => {
             return (
               <RecipeCard
-                key={recipe}
-                index={recipe}
-                title={this.state.recipes[recipe].title}
-                image={this.state.recipes[recipe].image}
-                protein={this.state.recipes[recipe].protein}
-                addToBox={this.addToBox}
+                key={recipe.id}
+                title={recipe.title}
+                image={recipe.image}
+                protein={recipe.protein}
+                addToBox={() => this.addToBox(recipe.id)}
               />
             );
           })}
         </div>
-        {originalKeys.length === 0 ? (
+        {recipes.length === 0 ? (
           <Button onClick={this.loadSampleRecipes}>Load Sample Recipes</Button>
         ) : null}
         <Box

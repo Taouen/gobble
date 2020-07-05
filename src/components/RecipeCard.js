@@ -50,7 +50,7 @@ const AddButton = styled.button.attrs((props) => ({
 
 class RecipeCard extends React.Component {
   render() {
-    const { image, title, protein } = this.props;
+    const { image, title, protein, id } = this.props;
     return (
       <Card>
         <ImageWrapper>
@@ -60,7 +60,7 @@ class RecipeCard extends React.Component {
           <Title>{title}</Title>
           <p>{protein}</p>
         </RecipeTitle>
-        <AddButton onClick={() => this.props.addToBox(this.props.index)}>
+        <AddButton onClick={() => this.props.addToBox(id)}>
           Add to Box
         </AddButton>
       </Card>

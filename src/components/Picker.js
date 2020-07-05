@@ -4,6 +4,7 @@ import RecipeCard from './RecipeCard';
 import sampleRecipes from '../recipes';
 import Box from './Box';
 import '../css/picker.css';
+import { v1 as uuid } from 'uuid';
 
 const Button = styled.button`
   border: none;
@@ -19,14 +20,6 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr;
 `;
-/*
-- menu rendered based on object in state of menu options
--- add to box function, uses key to pick out the box from menu options, and generates a uuid for that item in the box
--- remove from box function, uses uuid on the rendered item to find in the "in the box" array and remove
-
-
-
-*/
 
 class Picker extends React.Component {
   state = {
@@ -38,45 +31,47 @@ class Picker extends React.Component {
     this.setState({ recipes: sampleRecipes });
   };
 
-  addToBox = (key) => {
+  addToBox = (id) => {
     // add the id generation here, and add the resultant id to the box object below
-    const box = [...this.state.box];
-    const recipes = [...this.state.recipes];
-    /* Okay, here is where I'm currently having a problem. The key being supplied to the function is the index of the recipe related to the card. Everything appears to be operating properly, except that the wrong title and image are being rendered into the BoxItem component. */
-    console.log(recipes[key]);
-    box.push(recipes[key]);
+    const box = this.state.box;
+    const index = this.state.recipes.findIndex((recipe) => recipe.id === id);
+    const recipe = { ...this.state.recipes[index] };
+    const identifier = uuid();
+    recipe.identifier = identifier;
+    // ^ this is adding the identifier to the recipe directly in state, so every duplicate of the recipe ends up with the same identifier
 
+    // sorted it out -- spread the reference into a new object, then applied the identifier only to the new copy of the object.
+    box.push(recipe);
     this.setState({ box });
   };
 
-  removeFromBox = (key) => {
-    // detect the key here and use it to select the id, not the key (from the keys.map in the render fundtion)
-    const box = [...this.state.box];
-    delete box[key];
+  removeFromBox = (identifier) => {
+    const box = this.state.box;
+    const index = box.findIndex((i) => i.identifier === identifier);
+    box.splice(index, 1);
     this.setState({ box });
   };
 
   render() {
-    const originalKeys = [...this.state.recipes];
+    const { recipes } = this.state;
 
     return (
       <Wrapper>
         <div className="test">
-          {originalKeys.map((object) => {
-            const recipe = originalKeys.indexOf(object);
+          {recipes.map((recipe) => {
             return (
               <RecipeCard
-                key={recipe}
-                index={recipe}
-                title={this.state.recipes[recipe].title}
-                image={this.state.recipes[recipe].image}
-                protein={this.state.recipes[recipe].protein}
+                key={recipe.id}
+                id={recipe.id}
+                title={recipe.title}
+                image={recipe.image}
+                protein={recipe.protein}
                 addToBox={this.addToBox}
               />
             );
           })}
         </div>
-        {originalKeys.length === 0 ? (
+        {recipes.length === 0 ? (
           <Button onClick={this.loadSampleRecipes}>Load Sample Recipes</Button>
         ) : null}
         <Box

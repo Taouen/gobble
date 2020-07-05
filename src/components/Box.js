@@ -7,6 +7,7 @@ const BoxWrapper = styled.div`
   padding: 10px;
   border: 1px solid black;
   background: #ccc;
+  text-align: center;
 `;
 
 class Box extends React.Component {
@@ -26,6 +27,11 @@ class Box extends React.Component {
             />
           );
         })}
+        {contents.length === 6 ? (
+          <h3>Your box is full!</h3>
+        ) : (
+          <h3>Add up to {6 - contents.length} more recipes!</h3>
+        )}
       </BoxWrapper>
     );
   }

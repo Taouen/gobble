@@ -17,6 +17,12 @@ const Image = styled.img`
 
 const RemoveButton = styled.span`
   cursor: pointer;
+  transition: 0.3s;
+  font-size: 150%;
+
+  &:hover {
+    color: white;
+  }
 `;
 
 class BoxItem extends React.Component {

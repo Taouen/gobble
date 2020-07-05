@@ -17,6 +17,7 @@ const Button = styled.button`
 `;
 const Wrapper = styled.div`
   display: grid;
+  grid-template-columns: 4fr 1fr;
   grid-template-areas:
     'category box'
     'picker box';
@@ -33,6 +34,8 @@ const CategoryBar = styled.ul`
   display: flex;
   justify-content: space-around;
   grid-area: category;
+  color: white;
+  padding: 10px;
 `;
 
 class Picker extends React.Component {

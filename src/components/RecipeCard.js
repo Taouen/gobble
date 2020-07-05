@@ -11,7 +11,7 @@ const Card = styled.div`
   background: #ccc;
   width: 250px;
   height: 250px;
-  margin: 10px;
+  margin: 10px; /* s Remove this */
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@ const AddButton = styled.button.attrs((props) => ({
 
 class RecipeCard extends React.Component {
   render() {
-    const { image, title, protein, id } = this.props;
+    const { image, title, id } = this.props;
     return (
       <Card>
         <ImageWrapper>
@@ -58,7 +58,6 @@ class RecipeCard extends React.Component {
         </ImageWrapper>
         <RecipeTitle>
           <Title>{title}</Title>
-          <p>{protein}</p>
         </RecipeTitle>
         <AddButton onClick={() => this.props.addToBox(id)}>
           Add to Box

@@ -11,7 +11,7 @@ const Card = styled.div`
   background: #ccc;
   width: 250px;
   height: 250px;
-  margin: 10px; /* s Remove this */
+  margin: 10px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

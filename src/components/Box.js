@@ -15,7 +15,7 @@ class Box extends React.Component {
     const contents = this.props.contents;
 
     return (
-      <BoxWrapper>
+      <BoxWrapper className={this.props.className}>
         {contents.map((recipe, i) => {
           return (
             <BoxItem

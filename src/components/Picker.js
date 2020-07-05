@@ -19,23 +19,23 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 4fr 1fr;
   grid-template-areas:
-    'category box'
-    'picker box';
+    'menu box'
+    'recipes box';
 `;
-
-// Need to figure out how to style the Box component to fill the whole side.
-
 const RecipeCards = styled.div`
   display: flex;
   flex-wrap: wrap;
-  grid-area: picker;
+  grid-area: recipes;
 `;
 const CategoryBar = styled.ul`
   display: flex;
   justify-content: space-around;
-  grid-area: category;
+  grid-area: menu;
   color: white;
   padding: 10px;
+`;
+const StyledBox = styled(Box)`
+  grid-area: box;
 `;
 
 class Picker extends React.Component {
@@ -51,7 +51,6 @@ class Picker extends React.Component {
   };
 
   addToBox = (id) => {
-    // add the id generation here, and add the resultant id to the box object below
     if (this.state.boxFull) {
       alert('Box is full! Remove recipes before adding more.');
     } else {
@@ -60,9 +59,6 @@ class Picker extends React.Component {
       const recipe = { ...this.state.recipes[index] };
       const identifier = uuid();
       recipe.identifier = identifier;
-      // ^ this is adding the identifier to the recipe directly in state, so every duplicate of the recipe ends up with the same identifier
-
-      // sorted it out -- spread the reference into a new object, then applied the identifier only to the new copy of the object.
       box.push(recipe);
       this.setState({ box });
       if (this.state.box.length === 6) {
@@ -80,8 +76,7 @@ class Picker extends React.Component {
   };
 
   render() {
-    const { recipes } = this.state;
-    const { proteins } = this.state;
+    const { recipes, proteins } = this.state;
     return (
       <Wrapper>
         <CategoryBar>
@@ -106,7 +101,7 @@ class Picker extends React.Component {
         {recipes.length === 0 ? (
           <Button onClick={this.loadSampleRecipes}>Load Sample Recipes</Button>
         ) : null}
-        <Box
+        <StyledBox
           contents={this.state.box}
           recipes={this.state.recipes}
           removeFromBox={this.removeFromBox}

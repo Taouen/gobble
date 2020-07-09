@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import RecipeCard from './RecipeCard';
 import sampleRecipes from '../recipes';
 import Box from './Box';
+import CategoryBar from './CategoryBar';
 import { v1 as uuid } from 'uuid';
 
 const Button = styled.button`
@@ -27,13 +28,6 @@ const RecipeCards = styled.div`
   flex-wrap: wrap;
   grid-area: recipes;
 `;
-const CategoryBar = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  grid-area: menu;
-  color: white;
-  padding: 10px;
-`;
 const StyledBox = styled(Box)`
   grid-area: box;
 `;
@@ -43,16 +37,32 @@ class Picker extends React.Component {
     recipes: [],
     box: [],
     boxFull: false,
-    proteins: ['Chicken', 'Beef', 'Pork', 'Fish', 'Egg', 'Vegetarian', 'Vegan'],
+    categories: [
+      'All',
+      'Chicken',
+      'Beef',
+      'Pork',
+      'Fish',
+      'Egg',
+      'Vegetarian',
+      'Vegan',
+    ],
+    activeCategory: 'All',
   };
 
   loadSampleRecipes = () => {
     this.setState({ recipes: sampleRecipes });
   };
 
+  filterCategory = (protein) => {
+    let currentCategory = this.state.activeCategory;
+    currentCategory = protein;
+    this.setState({ activeCategory: currentCategory });
+  };
+
   addToBox = (id) => {
     if (this.state.boxFull) {
-      alert('Box is full! Remove recipes before adding more.');
+      alert('Your box is full! Remove recipes before adding more.');
     } else {
       const box = this.state.box;
       const index = this.state.recipes.findIndex((recipe) => recipe.id === id);
@@ -76,26 +86,27 @@ class Picker extends React.Component {
   };
 
   render() {
-    const { recipes, proteins } = this.state;
+    const { recipes, categories, activeCategory } = this.state;
     return (
       <Wrapper>
-        <CategoryBar>
-          {proteins.map((protein, i) => (
-            <li key={i}>{protein}</li>
-          ))}
-        </CategoryBar>
+        <CategoryBar
+          categories={categories}
+          filterCategory={this.filterCategory}
+        />
         <RecipeCards>
           {recipes.map((recipe) => {
-            return (
-              <RecipeCard
-                key={recipe.id}
-                id={recipe.id}
-                title={recipe.title}
-                image={recipe.image}
-                protein={recipe.protein}
-                addToBox={this.addToBox}
-              />
-            );
+            if (activeCategory === 'All' || recipe.protein === activeCategory) {
+              return (
+                <RecipeCard
+                  key={recipe.id}
+                  id={recipe.id}
+                  title={recipe.title}
+                  image={recipe.image}
+                  protein={recipe.protein}
+                  addToBox={this.addToBox}
+                />
+              );
+            }
           })}
         </RecipeCards>
         {recipes.length === 0 ? (

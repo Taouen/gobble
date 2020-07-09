@@ -9,6 +9,10 @@ const BoxWrapper = styled.div`
   background: #ccc;
   text-align: center;
 `;
+const Full = styled.span`
+  font-weight: bold;
+  color: red;
+`;
 
 class Box extends React.Component {
   render() {
@@ -28,7 +32,9 @@ class Box extends React.Component {
           );
         })}
         {contents.length === 6 ? (
-          <h3>Your box is full!</h3>
+          <h3>
+            Your box is <Full>full!</Full>
+          </h3>
         ) : (
           <h3>Add up to {6 - contents.length} more recipes!</h3>
         )}

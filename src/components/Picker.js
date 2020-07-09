@@ -50,7 +50,7 @@ class Picker extends React.Component {
     activeCategory: 'All',
   };
 
-  loadSampleRecipes = () => {
+  componentDidMount = () => {
     this.setState({ recipes: sampleRecipes });
   };
 
@@ -109,9 +109,6 @@ class Picker extends React.Component {
             }
           })}
         </RecipeCards>
-        {recipes.length === 0 ? (
-          <Button onClick={this.loadSampleRecipes}>Load Sample Recipes</Button>
-        ) : null}
         <StyledBox
           contents={this.state.box}
           recipes={this.state.recipes}

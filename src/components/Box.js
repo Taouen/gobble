@@ -38,6 +38,7 @@ class Box extends React.Component {
         ) : (
           <h3>Add up to {6 - contents.length} more recipes!</h3>
         )}
+        <button onClick={this.props.saveBox}>Save Box</button>
       </BoxWrapper>
     );
   }

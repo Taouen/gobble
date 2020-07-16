@@ -11,6 +11,7 @@ const Bar = styled.ul`
 const CategoryButton = styled.button`
   color: white;
   border: none;
+  border-radius: 5px;
   background: ${(props) => (props.active ? 'green' : 'none')};
   cursor: pointer;
   font-size: 1em;

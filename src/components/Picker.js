@@ -50,6 +50,12 @@ class Picker extends React.Component {
         categories.push(recipe.protein);
       }
     });
+    // generate box from localStorage
+    const currentBox = JSON.parse(localStorage.getItem('box'));
+    if (currentBox) {
+      this.setState({ box: currentBox });
+    }
+
     this.setState({ categories });
     this.setState({ recipes: sampleRecipes });
   };
@@ -85,6 +91,14 @@ class Picker extends React.Component {
     this.setState({ boxFull: false });
   };
 
+  saveBox = () => {
+    if (this.state.box.length === 0) {
+      localStorage.removeItem('box');
+    } else {
+      localStorage.setItem('box', JSON.stringify(this.state.box));
+    }
+  };
+
   render() {
     const { recipes, categories, activeCategory } = this.state;
     return (
@@ -114,6 +128,7 @@ class Picker extends React.Component {
           contents={this.state.box}
           recipes={this.state.recipes}
           removeFromBox={this.removeFromBox}
+          saveBox={this.saveBox}
         />
       </Wrapper>
     );

@@ -99,6 +99,17 @@ class Picker extends React.Component {
     }
   };
 
+  exitPicker = () => {
+    // need to check if the box state matches the local storage, and if so, exit without an alert. currently I think the data being added to local storage may be slightly different from what the actual state is
+    if (JSON.parse(localStorage.getItem('box')) !== this.state.box) {
+      if (window.confirm('Do you want to exit without saving?')) {
+        this.props.history.push('/');
+      }
+    } else {
+      this.props.history.push('/');
+    }
+  };
+
   render() {
     const { recipes, categories, activeCategory } = this.state;
     return (
@@ -129,6 +140,7 @@ class Picker extends React.Component {
           recipes={this.state.recipes}
           removeFromBox={this.removeFromBox}
           saveBox={this.saveBox}
+          exitPicker={this.exitPicker}
         />
       </Wrapper>
     );

@@ -41,11 +41,10 @@ class Picker extends React.Component {
   };
 
   componentDidMount = () => {
-    // trying to generate categories state from list of recipes
-
-    const categories = [];
+    // generate categories state from list of recipes
+    const categories = ['All'];
     sampleRecipes.map((recipe) => {
-      if (categories.findIndex(recipe.protein)) {
+      if (categories.indexOf(recipe.protein) !== -1) {
         return;
       } else {
         categories.push(recipe.protein);
@@ -93,6 +92,7 @@ class Picker extends React.Component {
         <CategoryBar
           categories={categories}
           filterCategory={this.filterCategory}
+          activeCategory={this.state.activeCategory}
         />
         <RecipeCards>
           {recipes.map((recipe) => {

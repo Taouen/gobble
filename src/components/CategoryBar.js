@@ -11,13 +11,12 @@ const Bar = styled.ul`
 const CategoryButton = styled.button`
   color: white;
   border: none;
-  background: none;
+  background: ${(props) => (props.active ? 'green' : 'none')};
   cursor: pointer;
-  border-bottom: 2px solid #333;
   font-size: 1em;
 
   &:hover {
-    border-bottom: 2px solid green;
+    background: green;
   }
 `;
 
@@ -29,7 +28,10 @@ class Category extends React.Component {
       <Bar>
         {categories.map((protein, i) => (
           <li key={i}>
-            <CategoryButton onClick={() => this.props.filterCategory(protein)}>
+            <CategoryButton
+              onClick={() => this.props.filterCategory(protein)}
+              active={this.props.activeCategory === protein}
+            >
               {protein}
             </CategoryButton>
           </li>

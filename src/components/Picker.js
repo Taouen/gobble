@@ -52,6 +52,7 @@ class Picker extends React.Component {
     });
     // generate box from localStorage
     const currentBox = JSON.parse(localStorage.getItem('box'));
+    console.log(currentBox);
     if (currentBox) {
       this.setState({ box: currentBox });
     }
@@ -97,10 +98,15 @@ class Picker extends React.Component {
     } else {
       localStorage.setItem('box', JSON.stringify(this.state.box));
     }
+    console.log('Storage:', JSON.parse(localStorage.getItem('box')));
+    console.log('State:', this.state.box);
+    console.log(JSON.parse(localStorage.getItem('box')) == this.state.box);
   };
 
   exitPicker = () => {
     // need to check if the box state matches the local storage, and if so, exit without an alert. currently I think the data being added to local storage may be slightly different from what the actual state is
+
+    // Can you tell me what the difference between the two items being compared on line 111 are? On lines 101-103 I am logging them and comparing them and getting false, but to they human eye they look identical. What am I missing?
     if (JSON.parse(localStorage.getItem('box')) !== this.state.box) {
       if (window.confirm('Do you want to exit without saving?')) {
         this.props.history.push('/');

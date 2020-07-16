@@ -52,7 +52,6 @@ class Picker extends React.Component {
     });
     // generate box from localStorage
     const currentBox = JSON.parse(localStorage.getItem('box'));
-    console.log(currentBox);
     if (currentBox) {
       this.setState({ box: currentBox });
     }
@@ -98,9 +97,6 @@ class Picker extends React.Component {
     } else {
       localStorage.setItem('box', JSON.stringify(this.state.box));
     }
-    console.log('Storage:', JSON.parse(localStorage.getItem('box')));
-    console.log('State:', this.state.box);
-    console.log(JSON.parse(localStorage.getItem('box')) == this.state.box);
   };
 
   exitPicker = () => {

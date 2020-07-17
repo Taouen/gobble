@@ -27,17 +27,9 @@ class Picker extends React.Component {
     recipes: [],
     box: [],
     boxFull: false,
-    categories: [
-      'All',
-      'Chicken',
-      'Beef',
-      'Pork',
-      'Fish',
-      'Egg',
-      'Vegetarian',
-      'Vegan',
-    ],
+    categories: [],
     activeCategory: 'All',
+    boxHasChanged: false,
   };
 
   componentDidMount = () => {
@@ -50,17 +42,21 @@ class Picker extends React.Component {
         categories.push(recipe.protein);
       }
     });
+
     // generate box from localStorage
     const currentBox = JSON.parse(localStorage.getItem('box'));
     if (currentBox) {
       this.setState({ box: currentBox });
     }
 
+    // need to set an initial state for box to use for comparison when saving
+
     this.setState({ categories });
     this.setState({ recipes: sampleRecipes });
   };
 
   filterCategory = (protein) => {
+    // can this be pared down to just this.setState({ activeCategory: protein})?
     let currentCategory = this.state.activeCategory;
     currentCategory = protein;
     this.setState({ activeCategory: currentCategory });
@@ -97,12 +93,12 @@ class Picker extends React.Component {
     } else {
       localStorage.setItem('box', JSON.stringify(this.state.box));
     }
+    if (window.confirm('Save box and close recipe picker?')) {
+      this.props.history.push('/');
+    }
   };
 
   exitPicker = () => {
-    // need to check if the box state matches the local storage, and if so, exit without an alert. currently I think the data being added to local storage may be slightly different from what the actual state is
-
-    // Can you tell me what the difference between the two items being compared on line 111 are? On lines 101-103 I am logging them and comparing them and getting false, but to they human eye they look identical. What am I missing?
     if (JSON.parse(localStorage.getItem('box')) !== this.state.box) {
       if (window.confirm('Do you want to exit without saving?')) {
         this.props.history.push('/');

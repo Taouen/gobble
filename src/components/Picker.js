@@ -4,12 +4,14 @@ import RecipeCard from './RecipeCard';
 import sampleRecipes from '../recipes';
 import Box from './Box';
 import CategoryBar from './CategoryBar';
+import HeaderBar from './HeaderBar';
 import { v1 as uuid } from 'uuid';
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 4fr 1fr;
   grid-template-areas:
+    'title bar'
     'menu box'
     'recipes box';
 `;
@@ -27,9 +29,9 @@ class Picker extends React.Component {
     recipes: [],
     box: [],
     boxFull: false,
+    boxHasChanged: false,
     categories: [],
     activeCategory: 'All',
-    boxHasChanged: false,
   };
 
   componentDidMount = () => {
@@ -63,28 +65,34 @@ class Picker extends React.Component {
   };
 
   addToBox = (id) => {
-    if (this.state.boxFull) {
+    const { box, boxFull, boxHasChanged, recipes } = this.state;
+    if (boxFull) {
       alert('Your box is full! Remove recipes before adding more.');
     } else {
-      const box = this.state.box;
-      const index = this.state.recipes.findIndex((recipe) => recipe.id === id);
-      const recipe = { ...this.state.recipes[index] };
+      const index = recipes.findIndex((recipe) => recipe.id === id);
+      const recipe = { ...recipes[index] };
       const identifier = uuid();
       recipe.identifier = identifier;
       box.push(recipe);
       this.setState({ box });
-      if (this.state.box.length === 6) {
+      if (box.length === 6) {
         this.setState({ boxFull: true });
+      }
+      if (!boxHasChanged) {
+        this.setState({ boxHasChanged: true });
       }
     }
   };
 
   removeFromBox = (identifier) => {
-    const box = this.state.box;
+    const { box, boxHasChanged } = this.state;
     const index = box.findIndex((i) => i.identifier === identifier);
     box.splice(index, 1);
     this.setState({ box });
     this.setState({ boxFull: false });
+    if (!boxHasChanged) {
+      this.setState({ boxHasChanged: true });
+    }
   };
 
   saveBox = () => {
@@ -99,7 +107,8 @@ class Picker extends React.Component {
   };
 
   exitPicker = () => {
-    if (JSON.parse(localStorage.getItem('box')) !== this.state.box) {
+    const { boxHasChanged } = this.state;
+    if (boxHasChanged) {
       if (window.confirm('Do you want to exit without saving?')) {
         this.props.history.push('/');
       }
@@ -112,6 +121,7 @@ class Picker extends React.Component {
     const { recipes, categories, activeCategory } = this.state;
     return (
       <Wrapper>
+        <HeaderBar exitPicker={this.exitPicker} saveBox={this.saveBox} />
         <CategoryBar
           categories={categories}
           filterCategory={this.filterCategory}
@@ -137,8 +147,6 @@ class Picker extends React.Component {
           contents={this.state.box}
           recipes={this.state.recipes}
           removeFromBox={this.removeFromBox}
-          saveBox={this.saveBox}
-          exitPicker={this.exitPicker}
         />
       </Wrapper>
     );

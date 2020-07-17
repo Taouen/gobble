@@ -31,7 +31,7 @@ class BoxItem extends React.Component {
 
     return (
       <BoxCard>
-        <Image src={image} height="100px" width="100px" alt={title} />
+        <Image src={image} height="100px" width="100px" alt="" />
         {title}
         <RemoveButton
           onClick={() => this.props.removeFromBox(this.props.identifier)}

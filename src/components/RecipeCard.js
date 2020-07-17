@@ -54,7 +54,7 @@ class RecipeCard extends React.Component {
     return (
       <Card>
         <ImageWrapper>
-          <Image src={image} />
+          <Image src={image} alt="" />
         </ImageWrapper>
         <RecipeTitle>
           <Title>{title}</Title>

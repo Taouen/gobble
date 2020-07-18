@@ -5,6 +5,7 @@ import sampleRecipes from '../recipes';
 import Box from './Box';
 import CategoryBar from './CategoryBar';
 import HeaderBar from './HeaderBar';
+import isEqual from 'lodash/isEqual';
 import { v1 as uuid } from 'uuid';
 
 const Wrapper = styled.div`
@@ -45,23 +46,19 @@ class Picker extends React.Component {
       }
     });
 
-    // generate box from localStorage
+    // generate box from localStorage, if no localStorage item, create it as an empty array
     const currentBox = JSON.parse(localStorage.getItem('box'));
     if (currentBox) {
       this.setState({ box: currentBox });
+    } else {
+      localStorage.setItem('box', JSON.stringify([]));
     }
-
-    // need to set an initial state for box to use for comparison when saving
-
     this.setState({ categories });
     this.setState({ recipes: sampleRecipes });
   };
 
   filterCategory = (protein) => {
-    // can this be pared down to just this.setState({ activeCategory: protein})?
-    let currentCategory = this.state.activeCategory;
-    currentCategory = protein;
-    this.setState({ activeCategory: currentCategory });
+    this.setState({ activeCategory: protein });
   };
 
   addToBox = (id) => {
@@ -96,19 +93,14 @@ class Picker extends React.Component {
   };
 
   saveBox = () => {
-    if (this.state.box.length === 0) {
-      localStorage.removeItem('box');
-    } else {
-      localStorage.setItem('box', JSON.stringify(this.state.box));
-    }
     if (window.confirm('Save box and close recipe picker?')) {
+      localStorage.setItem('box', JSON.stringify(this.state.box));
       this.props.history.push('/');
     }
   };
 
   exitPicker = () => {
-    const { boxHasChanged } = this.state;
-    if (boxHasChanged) {
+    if (!isEqual(this.state.box, JSON.parse(localStorage.getItem('box')))) {
       if (window.confirm('Do you want to exit without saving?')) {
         this.props.history.push('/');
       }

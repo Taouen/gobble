@@ -10,9 +10,10 @@ import { v1 as uuid } from 'uuid';
 
 const Wrapper = styled.div`
   display: grid;
+  padding: 20px;
   grid-template-columns: 4fr 1fr;
   grid-template-areas:
-    'title bar'
+    'title title'
     'menu box'
     'recipes box';
 `;
@@ -24,13 +25,16 @@ const RecipeCards = styled.div`
 const StyledBox = styled(Box)`
   grid-area: box;
 `;
+const StyledHeader = styled(HeaderBar)`
+  height: 50px;
+  grid-area: title;
+`;
 
 class Picker extends React.Component {
   state = {
     recipes: [],
     box: [],
     boxFull: false,
-    boxHasChanged: false,
     categories: [],
     activeCategory: 'All',
   };
@@ -39,9 +43,7 @@ class Picker extends React.Component {
     // generate categories state from list of recipes
     const categories = ['All'];
     sampleRecipes.map((recipe) => {
-      if (categories.indexOf(recipe.protein) !== -1) {
-        return;
-      } else {
+      if (categories.indexOf(recipe.protein) === -1) {
         categories.push(recipe.protein);
       }
     });
@@ -113,7 +115,7 @@ class Picker extends React.Component {
     const { recipes, categories, activeCategory } = this.state;
     return (
       <Wrapper>
-        <HeaderBar exitPicker={this.exitPicker} saveBox={this.saveBox} />
+        <StyledHeader exitPicker={this.exitPicker} saveBox={this.saveBox} />
         <CategoryBar
           categories={categories}
           filterCategory={this.filterCategory}

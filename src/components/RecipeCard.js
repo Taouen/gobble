@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Title = styled.h3`
+const Title = styled.h2`
   font-size: 1.35rem;
   font-family: Arial, Helvetica, sans-serif;
 `;

@@ -1,9 +1,9 @@
 body {
-	background: #333;
+  background: #333;
 }
 
 #root {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

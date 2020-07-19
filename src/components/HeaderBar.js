@@ -3,15 +3,34 @@ import styled from 'styled-components';
 
 const Header = styled.header`
   color: white;
+  display: flex;
+  justify-content: space-between;
+`;
+const Button = styled.button`
+  cursor: pointer;
+  background: green;
+  border: none;
+  color: white;
+  margin-left: 10px;
+  height: 30px;
+
+  &:hover {
+    box-shadow: inset 0 0 3px #000000;
+  }
+`;
+const Title = styled.h1`
+  font-size: 2em;
 `;
 
 class HeaderBar extends React.Component {
   render() {
     return (
-      <Header>
-        Box for week of July 17
-        <button onClick={this.props.saveBox}>Save Box</button>
-        <button onClick={this.props.exitPicker}>Exit Picker</button>
+      <Header className={this.props.className}>
+        <Title>Box for week of July 17</Title>
+        <div>
+          <Button onClick={this.props.saveBox}>Save Changes</Button>
+          <Button onClick={this.props.exitPicker}>Exit Picker</Button>
+        </div>
       </Header>
     );
   }

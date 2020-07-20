@@ -19,7 +19,10 @@ const Button = styled.button`
   }
 `;
 const Title = styled.h1`
-  font-size: 2em;
+  font-size: 3.5em;
+  @media (min-width: 992px) {
+    font-size: 2em;
+  }
 `;
 
 class HeaderBar extends React.Component {

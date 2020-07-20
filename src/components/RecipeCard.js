@@ -2,27 +2,39 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Title = styled.h2`
-  font-size: 1.35rem;
+  font-size: 3em;
   font-family: Arial, Helvetica, sans-serif;
+  @media (min-width: 992px) {
+    font-size: 1.35em;
+  }
 `;
 
 const Card = styled.div`
-  border: 1px solid black;
   background: #ccc;
-  width: 250px;
-  height: 250px;
-  margin: 10px;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
   align-items: center;
+  border: 1px solid black;
+  width: 500px;
+  margin-bottom: 20px;
+
+  @media (min-width: 992px) {
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+  }
 `;
 
 const ImageWrapper = styled.div`
-  height: 150px;
   overflow: hidden;
-  border-top-left-radius: 10px;
+  height: 400px;
   border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+
+  @media (min-width: 992px) {
+    height: 150px;
+  }
 `;
 
 const Image = styled.img`
@@ -43,9 +55,13 @@ const AddButton = styled.button.attrs((props) => ({
   border: none;
   width: 80%;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  padding: 5px;
-  cursor: pointer;
+  font-size: 3em;
+  margin-bottom: 20px;
+  @media (min-width: 992px) {
+    font-size: 1rem;
+    padding: 5px;
+    cursor: pointer;
+  }
 `;
 
 class RecipeCard extends React.Component {

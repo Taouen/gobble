@@ -11,16 +11,30 @@ import { v1 as uuid } from 'uuid';
 const Wrapper = styled.div`
   display: grid;
   padding: 20px;
-  grid-template-columns: 4fr 1fr;
   grid-template-areas:
-    'title title'
-    'menu box'
-    'recipes box';
+    'title'
+    'menu'
+    'recipes'
+    'box';
+
+  @media (min-width: 992px) {
+    grid-template-columns: 4fr 1fr;
+    grid-template-areas:
+      'title title'
+      'menu box'
+      'recipes box';
+  }
 `;
 const RecipeCards = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  grid-area: recipes;
+  /* flex-wrap: no-wrap; */
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: 992px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-area: recipes;
+  }
 `;
 const StyledBox = styled(Box)`
   grid-area: box;

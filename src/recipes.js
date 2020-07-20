@@ -4,7 +4,7 @@ const sampleRecipes = [
     title: 'Tennessee Meatloaf',
     protein: 'Beef',
     tags: ['beef', 'american', 'dinner'],
-    image: '/images/meatloaf.webp',
+    image: '/images/meatloaf.png',
   },
 
   {
@@ -12,7 +12,7 @@ const sampleRecipes = [
     title: 'Restaurant-Style Buffalo Wings',
     protein: 'Chicken',
     tags: ['chicken', 'american', 'appetizer', 'dinner'],
-    image: '/images/wings.webp',
+    image: '/images/wings.png',
   },
 
   {
@@ -20,7 +20,7 @@ const sampleRecipes = [
     title: 'Chicken Parmesan',
     protein: 'Chicken',
     tags: ['chicken', 'italian', 'dinner'],
-    image: '/images/chicken-parmesan.webp',
+    image: '/images/chicken-parmesan.png',
   },
 
   {
@@ -28,7 +28,7 @@ const sampleRecipes = [
     title: 'Beef and Broccoli',
     protein: 'Beef',
     tags: ['beef', 'chinese', 'dinner'],
-    image: '/images/beef-broccoli.webp',
+    image: '/images/beef-broccoli.png',
   },
 
   {
@@ -36,7 +36,7 @@ const sampleRecipes = [
     title: 'Chicken Enchiladas',
     protein: 'Chicken',
     tags: ['chicken', 'mexican', 'dinner'],
-    image: '/images/chicken-enchiladas.webp',
+    image: '/images/chicken-enchiladas.png',
   },
 
   {
@@ -44,7 +44,7 @@ const sampleRecipes = [
     title: 'Baked Lemon Pepper Salmon',
     protein: 'Fish',
     tags: ['salmon', 'dinner'],
-    image: '/images/baked-salmon.webp',
+    image: '/images/baked-salmon.png',
   },
 
   {
@@ -52,7 +52,7 @@ const sampleRecipes = [
     title: 'Crustless Spinach Quiche',
     protein: 'Egg',
     tags: ['egg', 'french', 'main'],
-    image: '/images/spinach-quiche.webp',
+    image: '/images/spinach-quiche.png',
   },
 
   {
@@ -60,7 +60,7 @@ const sampleRecipes = [
     title: 'Fried Mozzarella Puffs',
     protein: 'Vegetarian',
     tags: ['vegetarian', 'italian', 'appetizer'],
-    image: '/images/mozzarella-puffs.webp',
+    image: '/images/mozzarella-puffs.png',
   },
 
   {
@@ -68,7 +68,7 @@ const sampleRecipes = [
     title: 'Chicken Fettuccine Alfredo',
     protein: 'Chicken',
     tags: ['chicken', 'italian', 'dinner'],
-    image: '/images/chicken-alfredo.jpeg',
+    image: '/images/chicken-alfredo.png',
   },
 
   {
@@ -76,7 +76,7 @@ const sampleRecipes = [
     title: 'Taco Pizza',
     protein: 'Beef',
     tags: ['beef', 'american', 'dinner'],
-    image: '/images/taco-pizza.webp',
+    image: '/images/taco-pizza.png',
   },
 
   {
@@ -84,7 +84,7 @@ const sampleRecipes = [
     title: 'Classic Waffles',
     protein: 'Vegetarian',
     tags: ['vegetarian', 'breakfast'],
-    image: '/images/waffles.webp',
+    image: '/images/waffles.png',
   },
 
   {
@@ -92,7 +92,7 @@ const sampleRecipes = [
     title: 'Shrimp Scampi',
     protein: 'Fish',
     tags: ['shrimp', 'italian', 'dinner'],
-    image: '/images/shrimp-scampi.webp',
+    image: '/images/shrimp-scampi.png',
   },
 
   {
@@ -100,7 +100,7 @@ const sampleRecipes = [
     title: 'Sheet Pan Apple Crisp',
     protein: 'Vegetarian',
     tags: ['american', 'dessert'],
-    image: '/images/apple-crisp.webp',
+    image: '/images/apple-crisp.png',
   },
 
   {
@@ -108,7 +108,7 @@ const sampleRecipes = [
     title: 'Pork Souvlaki',
     protein: 'Pork',
     tags: ['pork', 'greek', 'dinner'],
-    image: '/images/pork-souvlaki.webp',
+    image: '/images/pork-souvlaki.png',
   },
 
   {
@@ -116,7 +116,7 @@ const sampleRecipes = [
     title: 'Thai Steamed Mussels',
     protein: 'Fish',
     tags: ['mussels', 'thai', 'dinner', 'appetizer'],
-    image: '/images/mussels.webp',
+    image: '/images/mussels.png',
   },
 
   {
@@ -124,7 +124,7 @@ const sampleRecipes = [
     title: 'Take Out Style Fried Rice',
     protein: 'Vegetarian',
     tags: ['vegetarian', 'chinese', 'side', 'dinner'],
-    image: '/images/fried-rice.webp',
+    image: '/images/fried-rice.png',
   },
 ];
 

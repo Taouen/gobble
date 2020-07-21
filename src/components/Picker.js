@@ -10,7 +10,7 @@ import { v1 as uuid } from 'uuid';
 
 const Wrapper = styled.div`
   display: grid;
-  padding: 20px;
+  width: 95vw;
   grid-template-areas:
     'title'
     'menu'
@@ -27,11 +27,12 @@ const Wrapper = styled.div`
 `;
 const RecipeCards = styled.div`
   display: flex;
-  /* flex-wrap: no-wrap; */
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
   @media (min-width: 992px) {
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
     grid-area: recipes;
   }
@@ -40,7 +41,7 @@ const StyledBox = styled(Box)`
   grid-area: box;
 `;
 const StyledHeader = styled(HeaderBar)`
-  height: 50px;
+  margin: 20px 0;
   grid-area: title;
 `;
 

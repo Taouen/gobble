@@ -14,8 +14,11 @@ const CategoryButton = styled.button`
   border-radius: 5px;
   background: ${(props) => (props.active ? 'green' : 'none')};
   cursor: pointer;
-  font-size: 1em;
+  font-size: 2em;
 
+  @media (min-width: 992px) {
+    font-size: 1em;
+  }
   &:hover {
     background: green;
   }

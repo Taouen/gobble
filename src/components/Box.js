@@ -6,7 +6,7 @@ import '../css/reset.css';
 const BoxWrapper = styled.div`
   background: #ccc;
   border: 1px solid black;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
 `;
 const Full = styled.span`

@@ -2,26 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 
 const BoxCard = styled.div`
+  background: #999;
   display: flex;
+  font-size: 3em;
   justify-content: space-between;
+  margin: 5px;
   padding: 5px;
   place-items: center;
-  background: #999;
-  margin: 5px;
 `;
 
 const Image = styled.img`
-  object-fit: cover;
   grid-column: 1 / 1;
+  object-fit: cover;
 `;
 
 const RemoveButton = styled.span`
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 150%;
+  font-size: 2em;
+  font-weight: bold;
+  margin-right: 10px;
+  @media (min-width: 992px) {
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 150%;
 
-  &:hover {
-    color: white;
+    &:hover {
+      color: white;
+    }
   }
 `;
 

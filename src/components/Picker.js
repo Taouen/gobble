@@ -10,39 +10,40 @@ import { v1 as uuid } from 'uuid';
 
 const Wrapper = styled.div`
   display: grid;
-  width: 95vw;
   grid-template-areas:
     'title'
     'menu'
     'recipes'
     'box';
+  width: 95vw;
 
   @media (min-width: 992px) {
-    grid-template-columns: 4fr 1fr;
     grid-template-areas:
       'title title'
       'menu box'
       'recipes box';
+    grid-template-columns: 4fr 1fr;
   }
 `;
 const RecipeCards = styled.div`
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
+  margin-top: 20px;
   @media (min-width: 992px) {
     flex-direction: row;
-    justify-content: center;
     flex-wrap: wrap;
     grid-area: recipes;
+    justify-content: center;
   }
 `;
 const StyledBox = styled(Box)`
   grid-area: box;
 `;
 const StyledHeader = styled(HeaderBar)`
-  margin: 20px 0;
   grid-area: title;
+  margin: 20px 0;
 `;
 
 class Picker extends React.Component {

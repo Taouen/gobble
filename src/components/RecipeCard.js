@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Title = styled.h2`
-  font-size: 2.5em;
+  font-size: 2.8em;
   font-family: Arial, Helvetica, sans-serif;
   @media (min-width: 992px) {
     font-size: 1.35em;
@@ -12,13 +12,12 @@ const Title = styled.h2`
 const Card = styled.div`
   align-items: center;
   background: #ccc;
-  border: 1px solid black;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  /* height: 400px; */
-  margin-bottom: 20px;
-  width: 400px;
+  margin-bottom: 30px;
+  width: 450px;
+  height: 450px;
 
   @media (min-width: 992px) {
     width: 250px;
@@ -28,23 +27,27 @@ const Card = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  overflow: hidden;
-  height: 400px;
-  border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 300px;
+  overflow: hidden;
 
   @media (min-width: 992px) {
+    width: 100%;
     height: 150px;
   }
 `;
 
 const Image = styled.img`
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
   width: 100%;
-  height: 200px;
 `;
 
 const RecipeTitle = styled.div`
   padding: 10px;
+  text-align: center;
 `;
 
 const AddButton = styled.button.attrs((props) => ({
@@ -55,13 +58,14 @@ const AddButton = styled.button.attrs((props) => ({
   border: none;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 2em;
+  font-size: 2.5em;
   margin-bottom: 20px;
-  width: 60%;
+  margin-top: auto;
+  padding: 5px;
+  width: 70%;
   @media (min-width: 992px) {
     cursor: pointer;
-    font-size: 1em;
-    /*     padding: 5px; */
+    font-size: 1.2em;
   }
 `;
 

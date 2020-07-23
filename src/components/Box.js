@@ -4,14 +4,14 @@ import BoxItem from './BoxItem';
 import '../css/reset.css';
 
 const BoxWrapper = styled.div`
-  padding: 10px;
-  border: 1px solid black;
   background: #ccc;
+  border: 1px solid black;
+  padding: 10px;
   text-align: center;
 `;
 const Full = styled.span`
-  font-weight: bold;
   color: red;
+  font-weight: bold;
 `;
 
 class Box extends React.Component {

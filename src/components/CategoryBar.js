@@ -2,17 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Bar = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  grid-area: menu;
   color: white;
+  display: flex;
+  grid-area: menu;
+  justify-content: space-around;
   padding: 10px;
 `;
 const CategoryButton = styled.button`
-  color: white;
+  background: ${(props) => (props.active ? 'green' : 'none')};
   border: none;
   border-radius: 5px;
-  background: ${(props) => (props.active ? 'green' : 'none')};
+  color: white;
   cursor: pointer;
   font-size: 2em;
 

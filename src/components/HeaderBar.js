@@ -7,12 +7,12 @@ const Header = styled.header`
   justify-content: space-between;
 `;
 const Button = styled.button`
-  cursor: pointer;
   background: green;
   border: none;
   color: white;
-  margin-left: 10px;
+  cursor: pointer;
   height: 30px;
+  margin-left: 10px;
 
   &:hover {
     box-shadow: inset 0 0 3px #000000;

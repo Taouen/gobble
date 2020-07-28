@@ -11,17 +11,17 @@ const BoxWrapper = styled.div`
 
   @media (min-width: 992px) {
     font-size: 1em;
-    padding: 5px;
   }
 `;
 const BoxDesktop = styled.div`
-  display: ${(props) => (props.expanded ? 'block' : 'none')};
-  padding: 20px;
-  border-bottom: 1px solid black;
-  width: 100%;
+  display: none; /* ${(props) => (props.expanded ? 'inherit' : 'none')}; */
+/*   padding: 20px;
+  border-bottom: 1px solid black; */
 
   @media (min-width: 992px) {
     display: block;
+    border: none;
+    padding: 10px;
   }
 `;
 const BoxMobile = styled.div`
@@ -30,6 +30,10 @@ const BoxMobile = styled.div`
   @media (min-width: 992px) {
     display: none;
   }
+`;
+const MobileContents = styled.div`
+  display: ${(props) => (props.expanded ? 'inherit' : 'none')};
+  padding: 0 20px 20px 20px;
 `;
 const Full = styled.span`
   color: red;
@@ -42,7 +46,7 @@ class Box extends React.Component {
 
     return (
       <BoxWrapper className={this.props.className}>
-        <BoxDesktop expanded={expanded}>
+        <BoxDesktop>
           {contents.map((recipe, i) => {
             return (
               <BoxItem
@@ -63,6 +67,26 @@ class Box extends React.Component {
           )}
         </BoxDesktop>
         <BoxMobile onClick={() => this.props.expandBox()}>
+          <MobileContents expanded={expanded}>
+            {contents.map((recipe, i) => {
+              return (
+                <BoxItem
+                  key={i}
+                  identifier={recipe.identifier}
+                  title={recipe.title}
+                  image={recipe.image}
+                  removeFromBox={this.props.removeFromBox}
+                />
+              );
+            })}
+            {contents.length === 6 ? (
+              <h3>
+                Your box is <Full>full!</Full>
+              </h3>
+            ) : (
+              <h3>Add up to {6 - contents.length} more recipes!</h3>
+            )}
+          </MobileContents>
           <h3>Items in box: {contents.length}</h3>
         </BoxMobile>
       </BoxWrapper>

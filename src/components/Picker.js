@@ -16,7 +16,6 @@ const Wrapper = styled.div`
     'recipes'
     'box';
   width: 95vw;
-
   @media (min-width: 992px) {
     grid-template-areas:
       'title title'
@@ -31,12 +30,14 @@ const RecipeCards = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 20px;
-  padding-bottom: 114px;
+  padding-bottom: 120px;
   @media (min-width: 992px) {
     flex-direction: row;
     flex-wrap: wrap;
     grid-area: recipes;
     justify-content: center;
+    margin: 0;
+    padding: 0;
   }
 `;
 const StyledBox = styled(Box)`
@@ -44,7 +45,6 @@ const StyledBox = styled(Box)`
   position: fixed;
   bottom: 0;
   left: 0;
-
   @media (min-width: 992px) {
     grid-area: box;
     width: 100%;
@@ -63,7 +63,7 @@ class Picker extends React.Component {
     boxFull: false,
     categories: [],
     activeCategory: 'All',
-    expanded: false,
+    expanded: true,
   };
 
   componentDidMount = () => {

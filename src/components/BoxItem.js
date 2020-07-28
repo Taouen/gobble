@@ -4,15 +4,15 @@ import styled from 'styled-components';
 const BoxCard = styled.div`
   background: #999;
   display: flex;
-  font-size: 3.5em;
+  font-size: 1.2em;
   justify-content: space-between;
   margin-bottom: 20px;
   padding: 20px;
   place-items: center;
 
   @media (min-width: 992px) {
-    margin: 5px;
-    padding: 5px;
+    margin: 10px;
+    padding: 10px;
     font-size: 1em;
   }
 `;

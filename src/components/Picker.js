@@ -31,6 +31,7 @@ const RecipeCards = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 20px;
+  padding-bottom: 114px;
   @media (min-width: 992px) {
     flex-direction: row;
     flex-wrap: wrap;
@@ -39,7 +40,16 @@ const RecipeCards = styled.div`
   }
 `;
 const StyledBox = styled(Box)`
-  grid-area: box;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  @media (min-width: 992px) {
+    grid-area: box;
+    width: 100%;
+    position: relative;
+  }
 `;
 const StyledHeader = styled(HeaderBar)`
   grid-area: title;
@@ -53,6 +63,7 @@ class Picker extends React.Component {
     boxFull: false,
     categories: [],
     activeCategory: 'All',
+    expanded: false,
   };
 
   componentDidMount = () => {
@@ -127,6 +138,11 @@ class Picker extends React.Component {
     }
   };
 
+  expandBox = () => {
+    const isExpanded = this.state.expanded;
+    this.setState({ expanded: !isExpanded });
+  };
+
   render() {
     const { recipes, categories, activeCategory } = this.state;
     return (
@@ -157,6 +173,8 @@ class Picker extends React.Component {
           contents={this.state.box}
           recipes={this.state.recipes}
           removeFromBox={this.removeFromBox}
+          expandBox={this.expandBox}
+          expanded={this.state.expanded}
         />
       </Wrapper>
     );

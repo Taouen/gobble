@@ -5,6 +5,8 @@ const Header = styled.header`
   color: white;
   display: flex;
   justify-content: space-between;
+  grid-area: title;
+  margin: 20px 0;
 `;
 const Button = styled.button`
   background: green;

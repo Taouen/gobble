@@ -9,6 +9,7 @@ const BoxCard = styled.div`
   margin-bottom: 20px;
   padding: 20px;
   align-items: center;
+  width: 100%;
   @media (min-width: 992px) {
     margin-bottom: 10px;
     padding: 10px;

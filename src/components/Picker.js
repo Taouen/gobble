@@ -5,6 +5,7 @@ import sampleRecipes from '../recipes';
 import Box from './Box';
 import CategoryBar from './CategoryBar';
 import HeaderBar from './HeaderBar';
+import MobileBox from './MobileBox';
 import isEqual from 'lodash/isEqual';
 import { v1 as uuid } from 'uuid';
 
@@ -30,32 +31,16 @@ const RecipeCards = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 20px;
-  padding-bottom: 120px;
+  padding-bottom: 140px;
   @media (min-width: 992px) {
     flex-direction: row;
     flex-wrap: wrap;
     grid-area: recipes;
-    justify-content: center;
+    justify-content: start;
     margin: 0;
     padding: 0;
   }
 `;
-const StyledBox = styled(Box)`
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  @media (min-width: 992px) {
-    grid-area: box;
-    width: 100%;
-    position: relative;
-  }
-`;
-const StyledHeader = styled(HeaderBar)`
-  grid-area: title;
-  margin: 20px 0;
-`;
-
 class Picker extends React.Component {
   state = {
     recipes: [],
@@ -138,16 +123,11 @@ class Picker extends React.Component {
     }
   };
 
-  expandBox = () => {
-    const isExpanded = this.state.expanded;
-    this.setState({ expanded: !isExpanded });
-  };
-
   render() {
     const { recipes, categories, activeCategory } = this.state;
     return (
       <Wrapper>
-        <StyledHeader exitPicker={this.exitPicker} saveBox={this.saveBox} />
+        <HeaderBar exitPicker={this.exitPicker} saveBox={this.saveBox} />
         <CategoryBar
           categories={categories}
           filterCategory={this.filterCategory}
@@ -169,7 +149,12 @@ class Picker extends React.Component {
             }
           })}
         </RecipeCards>
-        <StyledBox
+        <Box
+          contents={this.state.box}
+          recipes={this.state.recipes}
+          removeFromBox={this.removeFromBox}
+        />
+        <MobileBox
           contents={this.state.box}
           recipes={this.state.recipes}
           removeFromBox={this.removeFromBox}

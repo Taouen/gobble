@@ -3,18 +3,19 @@ import styled from 'styled-components';
 import BoxItem from './BoxItem';
 
 const BoxTray = styled.div`
+  align-items: center;
   background: #ccc;
   border: 1px solid black;
-  font-size: 3em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  /* top positioning working correctly, need to figure out exactly what height to subtract from it. */
+  top: calc(100% - 101px);
+  display: flex;
+  flex-direction: column;
+  font-size: 3em;
+  left: 0;
   padding: 20px;
   position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   @media (min-width: 992px) {
     display: none;
@@ -22,13 +23,13 @@ const BoxTray = styled.div`
 `;
 
 const BoxInfo = styled.div`
-  padding-bottom: 20px;
-  margin-bottom: 30px;
-  border-bottom: 2px solid #999;
-  width: 100%;
-  display: flex;
   align-items: center;
+  border-bottom: 2px solid #999;
+  display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  width: 100%;
 `;
 
 /* const BoxWrapper = styled.div`
@@ -72,7 +73,7 @@ class MobileBox extends React.Component {
     const contents = this.props.contents;
 
     return (
-      <BoxTray className={this.props.className}>
+      <BoxTray contents={`${contents.length * 290}px`}>
         <BoxInfo>
           {contents.length === 6 ? (
             <h3>

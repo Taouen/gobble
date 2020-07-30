@@ -9,6 +9,12 @@ import MobileBox from './MobileBox';
 import isEqual from 'lodash/isEqual';
 import { v1 as uuid } from 'uuid';
 
+/* --- Current Issues & To Do's ---
+
+    - when a protein category is selected and items added to the box, it pushes the recipe cards further down the page. Category bar gets taller for some reason.
+
+*/
+
 const Wrapper = styled.div`
   display: grid;
   grid-template-areas:
@@ -22,7 +28,7 @@ const Wrapper = styled.div`
       'title title'
       'menu box'
       'recipes box';
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 3fr 1fr;
   }
 `;
 const RecipeCards = styled.div`
@@ -48,7 +54,7 @@ class Picker extends React.Component {
     boxFull: false,
     categories: [],
     activeCategory: 'All',
-    expanded: true,
+    expanded: false,
   };
 
   componentDidMount = () => {

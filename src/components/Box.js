@@ -6,10 +6,10 @@ import '../css/reset.css';
 const BoxWrapper = styled.div`
   background: #ccc;
   border: 1px solid black;
+  display: none;
+  grid-area: box;
   padding: 10px;
   text-align: center;
-  grid-area: box;
-  display: none;
 
   @media (min-width: 992px) {
     display: inline-block;

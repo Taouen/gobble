@@ -9,7 +9,7 @@ const BoxTray = styled.div`
   border: 1px solid black;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  /* top positioning working correctly, need to figure out exactly what height to subtract from it. */
+  /* when I changed the contents to be in a scrollable div, it changed the positioning calculations, need to adjust for max-height of BoxContents */
   bottom: ${(props) => {
     if (props.expanded) {
       return '0%';
@@ -38,6 +38,11 @@ const BoxInfo = styled.div`
   margin-bottom: 30px;
   padding-bottom: 20px;
   width: 100%;
+`;
+
+const BoxContents = styled.div`
+  max-height: 500px;
+  overflow: scroll;
 `;
 
 /* const BoxWrapper = styled.div`
@@ -95,17 +100,19 @@ class MobileBox extends React.Component {
             <h3>Add up to {6 - contents.length} more recipes!</h3>
           )}
         </BoxInfo>
-        {contents.map((recipe, i) => {
-          return (
-            <BoxItem
-              key={i}
-              identifier={recipe.identifier}
-              title={recipe.title}
-              image={recipe.image}
-              removeFromBox={this.props.removeFromBox}
-            />
-          );
-        })}
+        <BoxContents>
+          {contents.map((recipe, i) => {
+            return (
+              <BoxItem
+                key={i}
+                identifier={recipe.identifier}
+                title={recipe.title}
+                image={recipe.image}
+                removeFromBox={this.props.removeFromBox}
+              />
+            );
+          })}
+        </BoxContents>
       </BoxTray>
       /* <BoxWrapper className={this.props.className}>
         {contents.map((recipe, i) => {

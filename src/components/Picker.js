@@ -129,6 +129,11 @@ class Picker extends React.Component {
     }
   };
 
+  expandBox = () => {
+    const isExpanded = this.state.expanded;
+    this.setState({ expanded: !isExpanded });
+  };
+
   render() {
     const { recipes, categories, activeCategory } = this.state;
     return (

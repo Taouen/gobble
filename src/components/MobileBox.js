@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import BoxItem from './BoxItem';
+import { camelCase } from 'lodash';
 
 const BoxTray = styled.div`
   align-items: center;
@@ -9,13 +10,20 @@ const BoxTray = styled.div`
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   /* top positioning working correctly, need to figure out exactly what height to subtract from it. */
-  top: calc(100% - 101px);
+  bottom: ${(props) => {
+    if (props.expanded) {
+      return '0%';
+    } else {
+      return `calc(0% - ${props.contents})`;
+    }
+  }};
   display: flex;
   flex-direction: column;
   font-size: 3em;
   left: 0;
-  padding: 20px;
+  padding: 30px 20px 20px 20px;
   position: fixed;
+  transition: 0.5s;
   width: 100%;
   @media (min-width: 992px) {
     display: none;
@@ -24,7 +32,7 @@ const BoxTray = styled.div`
 
 const BoxInfo = styled.div`
   align-items: center;
-  border-bottom: 2px solid #999;
+  /* border-bottom: 2px solid #999; */
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
@@ -70,10 +78,14 @@ const Full = styled.span`
 
 class MobileBox extends React.Component {
   render() {
-    const contents = this.props.contents;
+    const { contents, expanded } = this.props;
 
     return (
-      <BoxTray contents={`${contents.length * 290}px`}>
+      <BoxTray
+        contents={`0% - (${contents.length * 310}px + 20px)`}
+        expanded={expanded}
+        onClick={this.props.expandBox}
+      >
         <BoxInfo>
           {contents.length === 6 ? (
             <h3>

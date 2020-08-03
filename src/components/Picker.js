@@ -85,7 +85,7 @@ class Picker extends React.Component {
   };
 
   addToBox = (id) => {
-    const { box, boxFull, boxHasChanged, recipes } = this.state;
+    const { box, boxFull, recipes } = this.state;
     if (boxFull) {
       alert('Your box is full! Remove recipes before adding more.');
     } else {
@@ -97,9 +97,6 @@ class Picker extends React.Component {
       this.setState({ box });
       if (box.length === 6) {
         this.setState({ boxFull: true });
-      }
-      if (!boxHasChanged) {
-        this.setState({ boxHasChanged: true });
       }
     }
   };

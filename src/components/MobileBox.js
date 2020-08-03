@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import BoxItem from './BoxItem';
-import { camelCase } from 'lodash';
 
 const BoxTray = styled.div`
   align-items: center;
@@ -23,7 +22,7 @@ const BoxTray = styled.div`
   left: 0;
   padding: 30px 20px 20px 20px;
   position: fixed;
-  transition: 0.5s;
+  transition: 0.3s;
   width: 100%;
   @media (min-width: 992px) {
     display: none;
@@ -32,17 +31,11 @@ const BoxTray = styled.div`
 
 const BoxInfo = styled.div`
   align-items: center;
-  /* border-bottom: 2px solid #999; */
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
   padding-bottom: 20px;
   width: 100%;
-`;
-
-const BoxContents = styled.div`
-  max-height: 500px;
-  overflow: scroll;
 `;
 
 /* const BoxWrapper = styled.div`
@@ -87,11 +80,10 @@ class MobileBox extends React.Component {
 
     return (
       <BoxTray
-        contents={`0% - (${contents.length * 310}px + 20px)`}
+        contents={`0% - (${contents.length * 210}px + 20px)`}
         expanded={expanded}
-        onClick={this.props.expandBox}
       >
-        <BoxInfo>
+        <BoxInfo onClick={this.props.expandBox}>
           {contents.length === 6 ? (
             <h3>
               Your box is <Full>full!</Full>
@@ -100,19 +92,17 @@ class MobileBox extends React.Component {
             <h3>Add up to {6 - contents.length} more recipes!</h3>
           )}
         </BoxInfo>
-        <BoxContents>
-          {contents.map((recipe, i) => {
-            return (
-              <BoxItem
-                key={i}
-                identifier={recipe.identifier}
-                title={recipe.title}
-                image={recipe.image}
-                removeFromBox={this.props.removeFromBox}
-              />
-            );
-          })}
-        </BoxContents>
+        {contents.map((recipe, i) => {
+          return (
+            <BoxItem
+              key={i}
+              identifier={recipe.identifier}
+              title={recipe.title}
+              image={recipe.image}
+              removeFromBox={this.props.removeFromBox}
+            />
+          );
+        })}
       </BoxTray>
       /* <BoxWrapper className={this.props.className}>
         {contents.map((recipe, i) => {

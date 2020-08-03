@@ -11,7 +11,10 @@ import { v1 as uuid } from 'uuid';
 
 /* --- Current Issues & To Do's ---
 
-    - when a protein category is selected and items added to the box, it pushes the recipe cards further down the page. Category bar gets taller for some reason.
+    - Desktop: when a protein category is selected and items added to the box, it pushes the recipe cards further down the page. Category bar gets taller for some reason.
+    - Mobile: On inital load, the page is super zoomed in.
+    - Mobile: When you select a category, the page zooms in, and you cannot zoom back to normal view.
+    - Mobile: when you add an item to box, the box jumps up slightly before settling back to the normal position.
 
 */
 
@@ -102,14 +105,10 @@ class Picker extends React.Component {
   };
 
   removeFromBox = (identifier) => {
-    const { box, boxHasChanged } = this.state;
+    const { box } = this.state;
     const index = box.findIndex((i) => i.identifier === identifier);
     box.splice(index, 1);
     this.setState({ box });
-    this.setState({ boxFull: false });
-    if (!boxHasChanged) {
-      this.setState({ boxHasChanged: true });
-    }
   };
 
   saveBox = () => {

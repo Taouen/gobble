@@ -13,9 +13,9 @@ import { v1 as uuid } from 'uuid';
 
     - Desktop: when a protein category is selected and items added to the box, it pushes the recipe cards further down the page. Category bar gets taller for some reason.
     - Mobile: On inital load, the page is super zoomed in.
-    - Mobile: When you select a category, the page zooms in, and you cannot zoom back to normal view.
     - Mobile: when you add an item to box, the box jumps up slightly before settling back to the normal position.
-
+    - Mobile (iphone): When you select a category, the page zooms in, and you cannot zoom back to normal view.
+    - Mobile (samsung): Landing page does not center content.
 */
 
 const Wrapper = styled.div`

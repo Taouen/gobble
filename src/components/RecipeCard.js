@@ -31,9 +31,9 @@ const ImageWrapper = styled.div`
   border-top-right-radius: 10px;
   height: 300px;
   overflow: hidden;
+  width: 100%;
 
   @media (min-width: 992px) {
-    width: 100%;
     height: 150px;
   }
 `;

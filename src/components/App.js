@@ -7,7 +7,7 @@ const Button = styled.button`
   background: green;
   padding: 10px;
   color: white;
-  font-size: 1.3rem;
+  font-size: 1rem;
   cursor: pointer;
   margin: 0 auto;
   border-radius: 10px;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 const Welcome = styled.h1`
-  font-size: 10vw;
+  font-size: 2rem;
   font-family: 'Times New Roman', serif;
   margin: 50px 0;
   @media (min-width: 992px) {

@@ -18,25 +18,22 @@ const Button = styled.button`
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 1.7em;
-  height: 3em;
-  margin-left: 20px;
-  padding: 15px;
+  font-size: 1rem;
+  /*   height: 1rem; */
+  /*   margin-left: 20px; */
+  /*   padding: 15px; */
   &:hover {
     box-shadow: inset 0 0 3px #000000;
   }
   @media (min-width: 992px) {
-    font-size: 1em;
+    font-size: 1rem;
     height: 30px;
     margin-left: 10px;
     padding: 0 8px;
   }
 `;
 const Title = styled.h1`
-  font-size: 3.8em;
-  @media (min-width: 992px) {
-    font-size: 2em;
-  }
+  font-size: 2rem;
 `;
 
 class HeaderBar extends React.Component {

@@ -18,12 +18,12 @@ const BoxTray = styled.div`
   }};
   display: flex;
   flex-direction: column;
-  font-size: 3em;
+  font-size: 1rem;
   left: 0;
-  padding: 30px 20px 20px 20px;
+  /*   padding: 30px 20px 20px 20px; */
   position: fixed;
   transition: 0.3s;
-  width: 100%;
+  /* width: 100%; */
   @media (min-width: 992px) {
     display: none;
   }
@@ -35,40 +35,9 @@ const BoxInfo = styled.div`
   flex-direction: column;
   margin-bottom: 30px;
   padding-bottom: 20px;
-  width: 100%;
+  /*   width: 100%; */
 `;
 
-/* const BoxWrapper = styled.div`
-  text-align: center;
-  padding-bottom: 50px;
-  padding-top: 20px;
-
-  @media (min-width: 992px) {
-    font-size: 1em;
-  }
-`;
-const BoxDesktop = styled.div`
-  display: none; ${(props) => (props.expanded ? 'inherit' : 'none')};
-  padding: 20px;
-  border-bottom: 1px solid black;
-
-  @media (min-width: 992px) {
-    display: block;
-    border: none;
-    padding: 10px;
-  }
-`;
-const BoxMobile = styled.div`
-  padding-bottom: 50px;
-  padding-top: 20px;
-  @media (min-width: 992px) {
-    display: none;
-  }
-`;
-const MobileContents = styled.div`
-  display: ${(props) => (props.expanded ? 'inherit' : 'none')};
-  padding: 0 20px 20px 20px;
-`; */
 const Full = styled.span`
   color: red;
   font-weight: bold;
@@ -104,26 +73,6 @@ class MobileBox extends React.Component {
           );
         })}
       </BoxTray>
-      /* <BoxWrapper className={this.props.className}>
-        {contents.map((recipe, i) => {
-          return (
-            <BoxItem
-              key={i}
-              identifier={recipe.identifier}
-              title={recipe.title}
-              image={recipe.image}
-              removeFromBox={this.props.removeFromBox}
-            />
-          );
-        })}
-        {contents.length === 6 ? (
-          <h3>
-            Your box is <Full>full!</Full>
-          </h3>
-        ) : (
-          <h3>Add up to {6 - contents.length} more recipes!</h3>
-        )}
-      </BoxWrapper> */
     );
   }
 }

@@ -13,6 +13,7 @@ import { v1 as uuid } from 'uuid';
 
     - Desktop: when a protein category is selected and items added to the box, it pushes the recipe cards further down the page. Category bar gets taller for some reason.
     - Mobile: On inital load, the Picker is super zoomed in.
+      - removing the <meta> viewport tag in index.html fixes the view (though the landing (App.js) page now looks zoomed out.)
     - Mobile: when you add an item to box, the box jumps up slightly before settling back to the normal position.
     - Mobile (iphone): When you select a category, the page zooms in, and you cannot zoom back to normal view.
     - Firefox Android: when exiting picker, landing page reflects zoom level of picker.
@@ -27,7 +28,7 @@ const Wrapper = styled.div`
     'menu'
     'recipes'
     'box';
-  width: 95vw;
+  /*   width: 95vw; */
   @media (min-width: 992px) {
     grid-template-areas:
       'title title'
@@ -59,7 +60,7 @@ class Picker extends React.Component {
     boxFull: false,
     categories: [],
     activeCategory: 'All',
-    expanded: false,
+    expanded: true,
   };
 
   componentDidMount = () => {

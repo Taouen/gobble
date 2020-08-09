@@ -5,26 +5,26 @@ const BoxCard = styled.div`
   align-items: center;
   background: #999;
   display: flex;
-  font-size: 1.1em;
+  font-size: 1.3rem;
   justify-content: space-between;
   margin-bottom: 20px;
-  padding: 20px;
+  /*   padding: 20px; */
   width: 100%;
   @media (min-width: 992px) {
     margin-bottom: 10px;
     padding: 10px;
-    font-size: 1em;
+    font-size: 1rem;
   }
 `;
 
 const Image = styled.img`
   grid-column: 1 / 1;
   object-fit: cover;
-  height: 150px;
-  width: 150px;
+  height: auto;
+  width: 25%;
   @media (min-width: 992px) {
-    height: 100px;
-    width: 100px;
+    height: 35%;
+    width: 35%;
   }
 `;
 
@@ -33,12 +33,12 @@ const InfoPanel = styled.div`
 `;
 
 const RemoveButton = styled.span`
-  font-size: 2em;
+  font-size: 3rem;
   font-weight: bold;
   @media (min-width: 992px) {
     cursor: pointer;
     transition: 0.3s;
-    font-size: 150%;
+    font-size: 2rem;
 
     &:hover {
       color: white;

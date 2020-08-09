@@ -14,10 +14,10 @@ const CategoryButton = styled.button`
   border-radius: 5px;
   color: white;
   cursor: pointer;
-  font-size: 2em;
+  font-size: 1rem;
 
   @media (min-width: 992px) {
-    font-size: 1em;
+    font-size: 1rem;
   }
   &:hover {
     background: green;

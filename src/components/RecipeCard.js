@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Title = styled.h2`
-  font-size: 2.8em;
+  font-size: 1.2rem;
   font-family: Arial, Helvetica, sans-serif;
   @media (min-width: 992px) {
-    font-size: 1.35em;
+    font-size: 1rem;
   }
 `;
 
@@ -16,25 +16,25 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
-  width: 450px;
-  height: 450px;
+  width: 50vw;
+  height: 50vw;
 
   @media (min-width: 992px) {
-    width: 250px;
-    height: 250px;
     margin: 10px;
+    width: 17vw;
+    height: 17vw;
   }
 `;
 
 const ImageWrapper = styled.div`
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  height: 300px;
+  /*   height: 300px; */
   overflow: hidden;
   width: 100%;
 
   @media (min-width: 992px) {
-    height: 150px;
+    /* height: 150px; */
   }
 `;
 
@@ -58,14 +58,13 @@ const AddButton = styled.button.attrs((props) => ({
   border: none;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 2.5em;
+  font-size: 1rem;
   margin-bottom: 20px;
   margin-top: auto;
   padding: 5px;
   width: 70%;
   @media (min-width: 992px) {
     cursor: pointer;
-    font-size: 1.2em;
   }
 `;
 

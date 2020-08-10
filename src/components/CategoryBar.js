@@ -7,6 +7,7 @@ const Bar = styled.ul`
   grid-area: menu;
   justify-content: space-around;
   padding: 10px;
+  width: 100vw;
 `;
 const CategoryButton = styled.button`
   background: ${(props) => (props.active ? 'green' : 'none')};
@@ -16,9 +17,8 @@ const CategoryButton = styled.button`
   cursor: pointer;
   font-size: 1rem;
 
-  @media (min-width: 992px) {
-    font-size: 1rem;
-  }
+  padding: 0; /* apparently the li has a default padding, need this to override */
+
   &:hover {
     background: green;
   }

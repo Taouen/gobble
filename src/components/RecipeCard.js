@@ -29,7 +29,7 @@ const Card = styled.div`
 const ImageWrapper = styled.div`
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  /*   height: 300px; */
+  /* height: 300px; */
   overflow: hidden;
   width: 100%;
 

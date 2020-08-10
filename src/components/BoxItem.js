@@ -8,7 +8,7 @@ const BoxCard = styled.div`
   font-size: 1.3rem;
   justify-content: space-between;
   margin-bottom: 20px;
-  /*   padding: 20px; */
+  padding: 20px;
   width: 100%;
   @media (min-width: 992px) {
     margin-bottom: 10px;

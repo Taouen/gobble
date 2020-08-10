@@ -20,10 +20,10 @@ const BoxTray = styled.div`
   flex-direction: column;
   font-size: 1rem;
   left: 0;
-  /*   padding: 30px 20px 20px 20px; */
+  padding: 30px 20px 20px 20px;
   position: fixed;
   transition: 0.3s;
-  /* width: 100%; */
+  width: 100%;
   @media (min-width: 992px) {
     display: none;
   }

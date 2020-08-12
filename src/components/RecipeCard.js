@@ -16,8 +16,8 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
-  width: 50vw;
-  height: 50vw;
+  width: 40vw;
+  height: 40vw;
 
   @media (min-width: 992px) {
     margin: 10px;

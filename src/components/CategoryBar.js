@@ -5,8 +5,9 @@ const Bar = styled.ul`
   color: white;
   display: flex;
   grid-area: menu;
-  justify-content: space-around;
-  padding: 10px;
+  justify-content: space-between;
+  overflow: scroll;
+  padding: 0 10px;
   width: 100vw;
 `;
 const CategoryButton = styled.button`
@@ -15,9 +16,8 @@ const CategoryButton = styled.button`
   border-radius: 5px;
   color: white;
   cursor: pointer;
-  font-size: 1rem;
-
-  padding: 0; /* apparently the li has a default padding, need this to override */
+  font-size: 1.2rem;
+  /*   padding: 0; */ /* apparently the li has a default padding, need this to override */
 
   &:hover {
     background: green;

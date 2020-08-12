@@ -5,10 +5,11 @@ const Header = styled.header`
   align-items: center;
   color: white;
   display: flex;
+  font-family: serif;
   grid-area: title;
   justify-content: space-between;
   margin: 20px 0;
-  padding: 0 20px;
+  padding: 0 10px;
   @media (min-width: 992px) {
     padding: 0;
   }
@@ -19,9 +20,8 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
   font-size: 1rem;
-  /*   height: 1rem; */
-  /*   margin-left: 20px; */
-  /*   padding: 15px; */
+  margin-left: 1vw;
+  padding: 0;
   &:hover {
     box-shadow: inset 0 0 3px #000000;
   }
@@ -33,7 +33,7 @@ const Button = styled.button`
   }
 `;
 const Title = styled.h1`
-  font-size: 2rem;
+  font-size: 1.5rem;
 `;
 
 class HeaderBar extends React.Component {
@@ -41,10 +41,10 @@ class HeaderBar extends React.Component {
     return (
       <Header className={this.props.className}>
         <Title>Box for week of July 17</Title>
-        <div>
-          <Button onClick={this.props.saveBox}>Save Changes</Button>
-          <Button onClick={this.props.exitPicker}>Exit Picker</Button>
-        </div>
+        {/* <div> */}
+        <Button onClick={this.props.saveBox}>Save Changes</Button>
+        <Button onClick={this.props.exitPicker}>Exit Picker</Button>
+        {/*  </div> */}
       </Header>
     );
   }

@@ -11,14 +11,17 @@ const Bar = styled.div`
   width: 100vw;
 `;
 const CategoriesMenu = styled.ul`
+  background: #555;
   display: flex;
   flex-wrap: wrap;
   height: 0;
-  justify-content: center;
+  /*   justify-content: center; */
   overflow: hidden;
+  transition: 0.5s;
   width: 100%;
   &.active {
-    height: auto;
+    height: 100px;
+    overflow: scroll;
     /* need to figure out transition, currently even setting the transition does nothing. */
   }
 `;
@@ -29,14 +32,16 @@ const CategoryButton = styled.button`
   color: white;
   cursor: pointer;
   font-size: 1.2rem;
-  padding: 0; /* apparently the li has a default padding, need this to override */
-  width: 100px; /*  not sure what to set here, need all the buttons to be the same width but dont want to use a fixed width */
+  margin: 5px;
+  padding: 10px; /* apparently the li has a default padding, need this to override */
+  /*   width: 100px;  */ /*  not sure what to set here, need all the buttons to be the same width but dont want to use a fixed width */
   &:hover {
     background: green;
   }
 `;
 const FilterButton = styled.h4`
   font-size: 1.2rem;
+  margin-bottom: 5px;
 `;
 
 class Category extends React.Component {

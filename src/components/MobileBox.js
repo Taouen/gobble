@@ -44,15 +44,24 @@ const Full = styled.span`
 `;
 
 class MobileBox extends React.Component {
+  state = {
+    expanded: false,
+  };
+
+  expandBox = () => {
+    const isExpanded = this.state.expanded;
+    this.setState({ expanded: !isExpanded });
+  };
+
   render() {
-    const { contents, expanded } = this.props;
+    const { contents } = this.props;
 
     return (
       <BoxTray
         contents={`0% - (${contents.length * 210}px + 20px)`}
-        expanded={expanded}
+        expanded={this.state.expanded}
       >
-        <BoxInfo onClick={this.props.expandBox}>
+        <BoxInfo onClick={this.expandBox}>
           {contents.length === 6 ? (
             <h3>
               Your box is <Full>full!</Full>

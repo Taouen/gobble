@@ -61,7 +61,6 @@ class Picker extends React.Component {
     boxFull: false,
     categories: [],
     activeCategory: 'All',
-    expanded: true,
   };
 
   componentDidMount = () => {
@@ -127,11 +126,6 @@ class Picker extends React.Component {
     } else {
       this.props.history.push('/');
     }
-  };
-
-  expandBox = () => {
-    const isExpanded = this.state.expanded;
-    this.setState({ expanded: !isExpanded });
   };
 
   render() {

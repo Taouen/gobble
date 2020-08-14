@@ -12,12 +12,8 @@ import { v1 as uuid } from 'uuid';
 /* --- Current Issues & To Do's ---
 
     - Desktop: when a protein category is selected and items added to the box, it pushes the recipe cards further down the page. Category bar gets taller for some reason.
-    - Mobile: On inital load, the Picker is super zoomed in.
-      - issue was with em units being used in the css. currently working to fix.
     - Mobile: when you add an item to box, the box jumps up slightly before settling back to the normal position.
-    - Firefox Android: when exiting picker, landing page reflects zoom level of picker.
     - Mobile: when the box becomes too large for the screen, the user must remove items from the box in order to close it.
-    - Mobile: category bar is currently wider than the display size. 
 
 */
 

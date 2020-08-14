@@ -9,18 +9,19 @@ const BoxTray = styled.div`
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   /* when I changed the contents to be in a scrollable div, it changed the positioning calculations, need to adjust for max-height of BoxContents */
-  bottom: ${(props) => {
-    if (props.expanded) {
-      return '0%';
-    } else {
-      return `calc(0% - ${props.contents})`;
-    }
-  }};
+ /*  bottom: ${(props) => {
+   if (props.expanded) {
+     return '0%';
+   } else {
+     return `calc(0% - ${props.contents})`;
+   }
+ }}; */
+  bottom: 0;
   display: flex;
   flex-direction: column;
   font-size: 1rem;
-  left: 0;
-  padding: 30px 20px 20px 20px;
+  height: auto;
+  padding: 2vw;
   position: fixed;
   transition: 0.3s;
   width: 100%;
@@ -28,19 +29,29 @@ const BoxTray = styled.div`
     display: none;
   }
 `;
-
 const BoxInfo = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  /*   width: 100%; */
+  margin-bottom: 2vh;
+  width: 100%;
 `;
-
 const Full = styled.span`
   color: red;
   font-weight: bold;
+`;
+
+/* Working on the scrollable div, having difficulty with both % and vh units due to the menu bars for the browser disappearing. */
+const BoxContents = styled.div`
+  height: 50vh;
+  overflow: scroll;
+`;
+const CheckoutButton = styled.button`
+  background: green;
+  border: none;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
 `;
 
 class MobileBox extends React.Component {
@@ -57,10 +68,7 @@ class MobileBox extends React.Component {
     const { contents } = this.props;
 
     return (
-      <BoxTray
-        contents={`0% - (${contents.length * 210}px + 20px)`}
-        expanded={this.state.expanded}
-      >
+      <BoxTray expanded={this.state.expanded}>
         <BoxInfo onClick={this.expandBox}>
           {contents.length === 6 ? (
             <h3>
@@ -70,17 +78,20 @@ class MobileBox extends React.Component {
             <h3>Add up to {6 - contents.length} more recipes!</h3>
           )}
         </BoxInfo>
-        {contents.map((recipe, i) => {
-          return (
-            <BoxItem
-              key={i}
-              identifier={recipe.identifier}
-              title={recipe.title}
-              image={recipe.image}
-              removeFromBox={this.props.removeFromBox}
-            />
-          );
-        })}
+        <BoxContents>
+          {contents.map((recipe, i) => {
+            return (
+              <BoxItem
+                key={i}
+                identifier={recipe.identifier}
+                title={recipe.title}
+                image={recipe.image}
+                removeFromBox={this.props.removeFromBox}
+              />
+            );
+          })}
+        </BoxContents>
+        <CheckoutButton>Checkout</CheckoutButton>
       </BoxTray>
     );
   }

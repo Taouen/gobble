@@ -3,12 +3,13 @@ import styled from 'styled-components';
 
 const Bar = styled.div`
   color: white;
-  /*   display: flex; */
+  display: flex;
+  flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   grid-area: menu;
   /*   justify-content: space-between; */
   padding: 0 10px;
-  width: 100vw;
+  width: 100%;
 `;
 const CategoriesMenu = styled.ul`
   background: #555;
@@ -33,20 +34,21 @@ const CategoryButton = styled.button`
   cursor: pointer;
   font-size: 1.2rem;
   margin: 5px;
-  padding: 5px 10px; /* apparently the li has a default padding, need this to override */
+  padding: 5px 10px;
   /*   width: 100px;  */ /*  not sure what to set here, need all the buttons to be the same width but dont want to use a fixed width */
   &:hover {
     background: green;
   }
 `;
 const FilterButton = styled.h4`
+  align-self: center;
   font-size: 1.2rem;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 const Arrow = styled.img`
-  width: 5vw;
-  transition: 0.3s;
   transform: rotate(-180deg);
+  transition: 0.3s;
+  width: 1.5rem;
   &.active {
     transform: rotate(0deg);
     transition: 0.3s;
@@ -55,7 +57,7 @@ const Arrow = styled.img`
 
 class Category extends React.Component {
   state = {
-    active: true,
+    active: false,
   };
 
   openMenu = () => {
@@ -71,8 +73,9 @@ class Category extends React.Component {
         <FilterButton onClick={this.openMenu}>
           Filter{' '}
           <Arrow
-            src="/images/arrow.png"
+            alt=""
             className={this.state.active ? 'active' : 'null'}
+            src="/images/arrow.png"
           />
         </FilterButton>
 
@@ -80,8 +83,8 @@ class Category extends React.Component {
           {categories.map((protein, i) => (
             <li key={i}>
               <CategoryButton
-                onClick={() => this.props.filterCategory(protein)}
                 active={this.props.activeCategory === protein}
+                onClick={() => this.props.filterCategory(protein)}
               >
                 {protein}
               </CategoryButton>

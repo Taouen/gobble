@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 const Welcome = styled.h1`
+  color: white;
   font-size: 2rem;
   font-family: 'Times New Roman', serif;
   margin: 50px 0;

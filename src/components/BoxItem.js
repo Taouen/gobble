@@ -7,8 +7,8 @@ const BoxCard = styled.div`
   display: flex;
   font-size: 1.3rem;
   justify-content: space-between;
-  margin-bottom: 20px;
-  padding: 20px;
+  /*   margin-bottom: 20px;
+  padding: 20px; */
   width: 100%;
   @media (min-width: 992px) {
     margin-bottom: 10px;
@@ -16,7 +16,6 @@ const BoxCard = styled.div`
     font-size: 1rem;
   }
 `;
-
 const Image = styled.img`
   grid-column: 1 / 1;
   object-fit: cover;
@@ -27,11 +26,6 @@ const Image = styled.img`
     width: 35%;
   }
 `;
-
-const InfoPanel = styled.div`
-  /*   text-align: left; */
-`;
-
 const RemoveButton = styled.span`
   font-size: 3rem;
   font-weight: bold;
@@ -53,7 +47,7 @@ class BoxItem extends React.Component {
     return (
       <BoxCard>
         <Image src={image} alt="" />
-        <InfoPanel>{title}</InfoPanel>
+        <div>{title}</div>
         <RemoveButton
           onClick={() => this.props.removeFromBox(this.props.identifier)}
         >

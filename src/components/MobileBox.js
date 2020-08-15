@@ -8,55 +8,76 @@ const BoxTray = styled.div`
   border: 1px solid black;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  /* when I changed the contents to be in a scrollable div, it changed the positioning calculations, need to adjust for max-height of BoxContents */
- /*  bottom: ${(props) => {
-   if (props.expanded) {
-     return '0%';
-   } else {
-     return `calc(0% - ${props.contents})`;
-   }
- }}; */
-  bottom: 0;
+  bottom: ${(props) => {
+    if (props.expanded) {
+      return '0';
+    } else {
+      return `-456px`;
+    }
+  }};
   display: flex;
   flex-direction: column;
   font-size: 1rem;
-  height: auto;
-  padding: 2vw;
+  height: 500px;
+  justify-content: space-between;
+  padding-bottom: 4vh;
   position: fixed;
-  transition: 0.3s;
+  transition: 0.5s;
   width: 100%;
+  @media (min-width: 576px) {
+    bottom: ${(props) => {
+      if (props.expanded) {
+        return '0';
+      } else {
+        return `-177px`;
+      }
+    }};
+    height: 225px;
+  }
   @media (min-width: 992px) {
     display: none;
   }
 `;
 const BoxInfo = styled.div`
+  /*   border: 1px solid purple; */
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-bottom: 2vh;
+  height: 44px;
+  justify-content: center;
+  padding-bottom: 10px;
   width: 100%;
+  @media (min-width: 576px) {
+    height: 60px;
+  }
 `;
 const Full = styled.span`
   color: red;
   font-weight: bold;
 `;
-
-/* Working on the scrollable div, having difficulty with both % and vh units due to the menu bars for the browser disappearing. */
 const BoxContents = styled.div`
-  height: 50vh;
+  align-items: center;
+  border-bottom: 1px solid #999;
+  height: 80%;
+  margin-bottom: 2vh;
   overflow: scroll;
+  width: 100%;
 `;
 const CheckoutButton = styled.button`
   background: green;
   border: none;
+  border-radius: 2px;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+  width: 90%;
 `;
 
 class MobileBox extends React.Component {
   state = {
-    expanded: false,
+    expanded: true,
   };
 
   expandBox = () => {

@@ -3,13 +3,15 @@ import styled from 'styled-components';
 
 const BoxCard = styled.div`
   align-items: center;
-  background: #999;
+  border-top: 1px solid #999;
+  /*   border-bottom: 1px solid #999; */
   display: flex;
   font-size: 1.3rem;
   justify-content: space-between;
-  /*   margin-bottom: 20px;
-  padding: 20px; */
-  width: 100%;
+  margin: 0 auto;
+  padding: 0.5rem;
+  width: 95%;
+  /* can set media for landscape and set width to 50%, and display as flex or grid to make 2 column layout */
   @media (min-width: 992px) {
     margin-bottom: 10px;
     padding: 10px;
@@ -17,7 +19,6 @@ const BoxCard = styled.div`
   }
 `;
 const Image = styled.img`
-  grid-column: 1 / 1;
   object-fit: cover;
   height: auto;
   width: 25%;

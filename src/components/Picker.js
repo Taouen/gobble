@@ -12,8 +12,7 @@ import { v1 as uuid } from 'uuid';
 /* --- Current Issues & To Do's ---
 
     - Desktop: when a protein category is selected and items added to the box, it pushes the recipe cards further down the page. Category bar gets taller for some reason.
-    - Mobile: when you add an item to box, the box jumps up slightly before settling back to the normal position.
-    - Mobile: when the box becomes too large for the screen, the user must remove items from the box in order to close it.
+    - Android: images in BoxItems do not conform to square shapes
 
 */
 
@@ -24,7 +23,7 @@ const Wrapper = styled.div`
     'menu'
     'recipes'
     'box';
-  /*   width: 100%; */
+  width: 100%;
   @media (min-width: 992px) {
     grid-template-areas:
       'title title'

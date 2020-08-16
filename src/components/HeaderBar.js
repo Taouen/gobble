@@ -22,6 +22,9 @@ const Button = styled.button`
   font-size: 1rem;
   margin-left: 1vw;
   padding: 0;
+  @media (min-width: 576px) {
+    padding: 0.25rem;
+  }
   @media (min-width: 992px) {
     font-size: 1rem;
     height: 30px;

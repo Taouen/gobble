@@ -4,14 +4,20 @@ import styled from 'styled-components';
 const BoxCard = styled.div`
   align-items: center;
   border-top: 1px solid #999;
-  /*   border-bottom: 1px solid #999; */
   display: flex;
   font-size: 1.3rem;
   justify-content: space-between;
   margin: 0 auto;
   padding: 0.5rem;
   width: 95%;
-  /* can set media for landscape and set width to 50%, and display as flex or grid to make 2 column layout */
+  :first-child {
+    border-top: none;
+  }
+  @media (min-width: 576px) {
+    :nth-child(2) {
+      border-top: none;
+    }
+  }
   @media (min-width: 992px) {
     margin-bottom: 10px;
     padding: 10px;
@@ -20,8 +26,8 @@ const BoxCard = styled.div`
 `;
 const Image = styled.img`
   object-fit: cover;
-  height: auto;
-  width: 25%;
+  height: 5rem;
+  width: 5rem;
   @media (min-width: 992px) {
     height: 35%;
     width: 35%;
@@ -29,7 +35,7 @@ const Image = styled.img`
 `;
 const RemoveButton = styled.span`
   font-size: 3rem;
-  font-weight: bold;
+  /* font-weight: bold; */
   @media (min-width: 992px) {
     cursor: pointer;
     transition: 0.3s;

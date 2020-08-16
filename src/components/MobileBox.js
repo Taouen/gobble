@@ -8,16 +8,10 @@ const BoxTray = styled.div`
   border: 1px solid black;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  bottom: ${(props) => {
-    if (props.expanded) {
-      return '0';
-    } else {
-      return `-456px`;
-    }
-  }};
+  bottom: ${(props) => (props.expanded ? '0' : '-456px')};
   display: flex;
   flex-direction: column;
-  font-size: 1rem;
+  /*   font-size: 1rem; */
   height: 500px;
   justify-content: space-between;
   padding-bottom: 4vh;
@@ -25,35 +19,25 @@ const BoxTray = styled.div`
   transition: 0.5s;
   width: 100%;
   @media (min-width: 576px) {
-    bottom: ${(props) => {
-      if (props.expanded) {
-        return '0';
-      } else {
-        return `-177px`;
-      }
-    }};
-    height: 225px;
+    bottom: ${(props) => (props.expanded ? '0' : '-227px')};
+    height: 275px;
   }
   @media (min-width: 992px) {
     display: none;
   }
 `;
 const BoxInfo = styled.div`
-  /*   border: 1px solid purple; */
   align-items: center;
+  border-bottom: 1px solid #999;
   display: flex;
-  flex-direction: column;
+  font-size: 1.2rem;
   height: 44px;
-  justify-content: center;
-  padding-bottom: 10px;
+  justify-content: space-between;
+  padding: 0 20px;
   width: 100%;
   @media (min-width: 576px) {
     height: 60px;
   }
-`;
-const Full = styled.span`
-  color: red;
-  font-weight: bold;
 `;
 const BoxContents = styled.div`
   align-items: center;
@@ -62,6 +46,13 @@ const BoxContents = styled.div`
   margin-bottom: 2vh;
   overflow: scroll;
   width: 100%;
+  &:first-child {
+  }
+  @media (min-width: 576px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
 `;
 const CheckoutButton = styled.button`
   background: green;
@@ -70,14 +61,25 @@ const CheckoutButton = styled.button`
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
+  justify-content: center;
   margin: 0;
   padding: 0;
   width: 90%;
+  &.small {
+    font-size: inherit;
+    opacity: ${(props) => (props.expanded ? '0' : '1')};
+    padding: 0.25rem;
+    transition: opacity 0.5s;
+    width: auto;
+  }
+  @media (min-width: 576px) {
+    padding: 2vh;
+  }
 `;
 
 class MobileBox extends React.Component {
   state = {
-    expanded: true,
+    expanded: false,
   };
 
   expandBox = () => {
@@ -92,12 +94,18 @@ class MobileBox extends React.Component {
       <BoxTray expanded={this.state.expanded}>
         <BoxInfo onClick={this.expandBox}>
           {contents.length === 6 ? (
-            <h3>
-              Your box is <Full>full!</Full>
-            </h3>
+            <h3>Your box is full!</h3>
           ) : (
-            <h3>Add up to {6 - contents.length} more recipes!</h3>
+            <h3>{contents.length} Items (Maximum 6)</h3>
+            /* <h3>Add up to {6 - contents.length} more recipes!</h3> */
           )}
+          <CheckoutButton
+            className="small"
+            expanded={this.state.expanded}
+            onClick={this.expandBox}
+          >
+            Checkout
+          </CheckoutButton>
         </BoxInfo>
         <BoxContents>
           {contents.map((recipe, i) => {
@@ -105,9 +113,9 @@ class MobileBox extends React.Component {
               <BoxItem
                 key={i}
                 identifier={recipe.identifier}
-                title={recipe.title}
                 image={recipe.image}
                 removeFromBox={this.props.removeFromBox}
+                title={recipe.title}
               />
             );
           })}

@@ -20,6 +20,7 @@ const BoxCard = styled.div`
     }
   }
   @media (min-width: 992px) {
+    margin: 0;
     margin-bottom: 10px;
     padding: 10px;
     font-size: 1rem;
@@ -30,8 +31,8 @@ const Image = styled.img`
   height: 5rem;
   width: 5rem;
   @media (min-width: 992px) {
-    height: 35%;
-    width: 35%;
+    height: 25%;
+    width: 25%;
   }
 `;
 const Title = styled.div`

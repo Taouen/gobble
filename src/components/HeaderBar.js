@@ -10,9 +10,6 @@ const Header = styled.header`
   justify-content: space-between;
   margin: 20px 0;
   padding: 0 10px;
-  @media (min-width: 992px) {
-    padding: 0;
-  }
 `;
 const Button = styled.button`
   background: green;

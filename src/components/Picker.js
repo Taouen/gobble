@@ -12,7 +12,8 @@ import { v1 as uuid } from 'uuid';
 /* --- Current Issues & To Do's ---
 
     - Desktop: when a protein category is selected and items added to the box, it pushes the recipe cards further down the page. Category bar gets taller for some reason.
-    - Android: images in BoxItems do not conform to square shapes
+    - iOS Safari: Landscape view scrolls fixed bottom below the screen while menu bar is showing
+    - Add/Remove from box - boxFull state refreshes to false on page load
 
 */
 
@@ -104,6 +105,7 @@ class Picker extends React.Component {
     const index = box.findIndex((i) => i.identifier === identifier);
     box.splice(index, 1);
     this.setState({ box });
+    this.setState({ boxFull: false });
   };
 
   saveBox = () => {

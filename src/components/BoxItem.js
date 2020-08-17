@@ -3,19 +3,20 @@ import styled from 'styled-components';
 
 const BoxCard = styled.div`
   align-items: center;
-  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
   display: flex;
   font-size: 1.3rem;
   justify-content: space-between;
   margin: 0 auto;
   padding: 0.5rem;
   width: 95%;
-  :first-child {
-    border-top: none;
+  :last-child {
+    border-bottom: none;
   }
   @media (min-width: 576px) {
-    :nth-child(2) {
-      border-top: none;
+    :nth-last-child(2) {
+      border-bottom: ${(props) =>
+        props.contents % 2 === 0 ? 'none' : '1px solid #999'};
     }
   }
   @media (min-width: 992px) {
@@ -33,9 +34,13 @@ const Image = styled.img`
     width: 35%;
   }
 `;
+const Title = styled.div`
+  width: 50%;
+  text-align: center;
+`;
 const RemoveButton = styled.span`
   font-size: 3rem;
-  /* font-weight: bold; */
+  padding: 0;
   @media (min-width: 992px) {
     cursor: pointer;
     transition: 0.3s;
@@ -49,12 +54,12 @@ const RemoveButton = styled.span`
 
 class BoxItem extends React.Component {
   render() {
-    const { title, image } = this.props;
+    const { title, image, contents } = this.props;
 
     return (
-      <BoxCard>
+      <BoxCard contents={contents}>
         <Image src={image} alt="" />
-        <div>{title}</div>
+        <Title>{title}</Title>
         <RemoveButton
           onClick={() => this.props.removeFromBox(this.props.identifier)}
         >

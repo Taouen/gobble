@@ -11,7 +11,7 @@ const BoxTray = styled.div`
   bottom: ${(props) => (props.expanded ? '0' : '-456px')};
   display: flex;
   flex-direction: column;
-  /*   font-size: 1rem; */
+  font-family: serif;
   height: 500px;
   justify-content: space-between;
   padding-bottom: 4vh;
@@ -46,8 +46,6 @@ const BoxContents = styled.div`
   margin-bottom: 2vh;
   overflow: scroll;
   width: 100%;
-  &:first-child {
-  }
   @media (min-width: 576px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -97,7 +95,6 @@ class MobileBox extends React.Component {
             <h3>Your box is full!</h3>
           ) : (
             <h3>{contents.length} Items (Maximum 6)</h3>
-            /* <h3>Add up to {6 - contents.length} more recipes!</h3> */
           )}
           <CheckoutButton
             className="small"
@@ -111,6 +108,7 @@ class MobileBox extends React.Component {
           {contents.map((recipe, i) => {
             return (
               <BoxItem
+                contents={contents.length}
                 key={i}
                 identifier={recipe.identifier}
                 image={recipe.image}

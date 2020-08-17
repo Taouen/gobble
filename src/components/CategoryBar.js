@@ -12,7 +12,7 @@ const Bar = styled.div`
   width: 100%;
 `;
 const CategoriesMenu = styled.ul`
-  background: #555;
+  /*   background: #555; */
   display: flex;
   flex-wrap: wrap;
   height: 0;
@@ -23,7 +23,12 @@ const CategoriesMenu = styled.ul`
   &.active {
     height: 6rem;
     overflow: scroll;
-    /* need to figure out transition, currently even setting the transition does nothing. */
+  }
+  @media (min-width: 992px) {
+    height: auto;
+    justify-content: space-around;
+    padding: 10px;
+    transition: none;
   }
 `;
 const CategoryButton = styled.button`
@@ -44,6 +49,9 @@ const FilterButton = styled.h4`
   align-self: center;
   font-size: 1.2rem;
   margin-bottom: 10px;
+  @media (min-width: 992px) {
+    display: none;
+  }
 `;
 const Arrow = styled.img`
   transform: rotate(-180deg);
@@ -52,6 +60,9 @@ const Arrow = styled.img`
   &.active {
     transform: rotate(0deg);
     transition: 0.3s;
+  }
+  @media (min-width: 992px) {
+    display: none;
   }
 `;
 

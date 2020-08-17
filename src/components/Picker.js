@@ -11,9 +11,7 @@ import { v1 as uuid } from 'uuid';
 
 /* --- Current Issues & To Do's ---
 
-    - Desktop: when a protein category is selected and items added to the box, it pushes the recipe cards further down the page. Category bar gets taller for some reason.
     - iOS Safari: Landscape view scrolls fixed bottom below the screen while menu bar is showing
-    - Add/Remove from box - boxFull state refreshes to false on page load
 
 */
 
@@ -26,22 +24,22 @@ const Wrapper = styled.div`
     'box';
   width: 100%;
   @media (min-width: 992px) {
+    align-items: flex-start;
     grid-template-areas:
       'title title'
       'menu box'
       'recipes box';
     grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto auto 1fr;
   }
 `;
 const RecipeCards = styled.div`
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 20px;
   padding-bottom: 140px;
   @media (min-width: 992px) {
-    flex-direction: row;
     flex-wrap: wrap;
     grid-area: recipes;
     justify-content: start;
@@ -72,6 +70,9 @@ class Picker extends React.Component {
     const currentBox = JSON.parse(localStorage.getItem('box'));
     if (currentBox) {
       this.setState({ box: currentBox });
+      if (currentBox.length === 6) {
+        this.setState({ boxFull: true });
+      }
     } else {
       localStorage.setItem('box', JSON.stringify([]));
     }

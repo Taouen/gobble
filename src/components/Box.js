@@ -45,7 +45,7 @@ const CheckoutButton = styled.button`
     transition: opacity 0.5s;
     width: auto;
   }
-  @media (min-width: 576px) {
+  @media (min-width: 992px) {
     cursor: pointer;
     padding: 2vh;
   }
@@ -67,7 +67,9 @@ class Box extends React.Component {
           ) : (
             <h3>{contents.length} Items (Maximum 6)</h3>
           )}
-          <CheckoutButton className="small">Checkout</CheckoutButton>
+          <CheckoutButton className="small" onClick={this.props.checkout}>
+            Checkout
+          </CheckoutButton>
         </BoxInfo>
         {contents.map((recipe, i) => {
           return (

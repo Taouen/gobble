@@ -18,10 +18,10 @@ const BoxTray = styled.div`
   position: fixed;
   transition: 0.5s;
   width: 100%;
-  @media (min-width: 576px) {
+/*   @media (min-width: 576px) {
     bottom: ${(props) => (props.expanded ? '0' : '-227px')};
     height: 275px;
-  }
+  } */
   @media (min-width: 992px) {
     display: none;
   }
@@ -35,9 +35,9 @@ const BoxInfo = styled.div`
   justify-content: space-between;
   padding: 0 20px;
   width: 100%;
-  @media (min-width: 576px) {
+  /* @media (min-width: 576px) {
     height: 60px;
-  }
+  } */
 `;
 const BoxContents = styled.div`
   align-items: center;
@@ -46,11 +46,11 @@ const BoxContents = styled.div`
   margin-bottom: 2vh;
   overflow: scroll;
   width: 100%;
-  @media (min-width: 576px) {
+  /*   @media (min-width: 576px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(3, 1fr);
-  }
+  } */
 `;
 const CheckoutButton = styled.button`
   background: green;
@@ -70,9 +70,9 @@ const CheckoutButton = styled.button`
     transition: opacity 0.5s;
     width: auto;
   }
-  @media (min-width: 576px) {
+  /*   @media (min-width: 576px) {
     padding: 2vh;
-  }
+  } */
 `;
 
 class MobileBox extends React.Component {
@@ -118,7 +118,7 @@ class MobileBox extends React.Component {
             );
           })}
         </BoxContents>
-        <CheckoutButton>Checkout</CheckoutButton>
+        <CheckoutButton onClick={this.props.checkout}>Checkout</CheckoutButton>
       </BoxTray>
     );
   }

@@ -13,12 +13,12 @@ const BoxCard = styled.div`
   :last-child {
     border-bottom: none;
   }
-  @media (min-width: 576px) {
+ /*  @media (min-width: 576px) {
     :nth-last-child(2) {
       border-bottom: ${(props) =>
         props.contents % 2 === 0 ? 'none' : '1px solid #999'};
     }
-  }
+  } */
   @media (min-width: 992px) {
     margin: 0;
     margin-bottom: 10px;

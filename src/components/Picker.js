@@ -126,6 +126,11 @@ class Picker extends React.Component {
     }
   };
 
+  checkout = () => {
+    localStorage.clear();
+    this.props.history.push('/checkout');
+  };
+
   render() {
     const { recipes, categories, activeCategory } = this.state;
     return (
@@ -153,11 +158,13 @@ class Picker extends React.Component {
           })}
         </RecipeCards>
         <Box
+          checkout={this.checkout}
           contents={this.state.box}
           recipes={this.state.recipes}
           removeFromBox={this.removeFromBox}
         />
         <MobileBox
+          checkout={this.checkout}
           contents={this.state.box}
           recipes={this.state.recipes}
           removeFromBox={this.removeFromBox}

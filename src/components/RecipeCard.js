@@ -12,12 +12,12 @@ const Card = styled.div`
   height: 70vw;
   margin-bottom: 30px;
   width: 70vw;
-  /*   @media (min-width: 576px) {
+  @media (min-width: 576px) {
     font-size: 100%;
     height: 25vw;
     margin: 0 2px 30px 2px;
     width: 25vw;
-  } */
+  }
   @media (min-width: 992px) {
     font-size: 1.2rem;
     height: 17vw;
@@ -44,12 +44,6 @@ const RecipeTitle = styled.div`
   text-align: center;
 `;
 const AddButton = styled.button`
-  /* Took this off after styled.button: 
-  .attrs((props) => ({
-  addToBox: 'props.addToBox',
-  index: 'props.index',
-}))
-*/
   background: green;
   border: none;
   color: white;

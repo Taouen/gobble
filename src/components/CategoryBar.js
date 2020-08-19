@@ -7,16 +7,13 @@ const Bar = styled.div`
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   grid-area: menu;
-  /*   justify-content: space-between; */
   padding: 0 10px;
   width: 100%;
 `;
 const CategoriesMenu = styled.ul`
-  /*   background: #555; */
   display: flex;
   flex-wrap: wrap;
   height: 0;
-  /*   justify-content: center; */
   overflow: hidden;
   transition: 0.5s;
   width: 100%;
@@ -40,7 +37,6 @@ const CategoryButton = styled.button`
   font-size: 1.2rem;
   margin: 5px;
   padding: 5px 10px;
-  /*   width: 100px;  */ /*  not sure what to set here, need all the buttons to be the same width but dont want to use a fixed width */
   &:hover {
     background: green;
   }

@@ -127,8 +127,14 @@ class Picker extends React.Component {
   };
 
   checkout = () => {
-    localStorage.clear();
-    this.props.history.push('/checkout');
+    const { box } = this.state;
+
+    if (box.length === 0) {
+      alert('Add at least 1 recipe to your box.');
+    } else if (window.confirm('Ready to checkout?')) {
+      localStorage.clear();
+      this.props.history.push('/checkout');
+    }
   };
 
   render() {

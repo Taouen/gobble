@@ -45,9 +45,15 @@ const ButtonWrapper = styled.div`
 class HeaderBar extends React.Component {
   render() {
     const date = new Date();
-    const weekOf = `${date.toLocaleString('default', { month: 'long' })} ${
-      date.getDate() - date.getDay()
-    }`;
+    const weekOf =
+      date.getDate() <= 7
+        ? `${date.toLocaleString('default', {
+            month: 'long',
+          })} ${date.getDate()}`
+        : `${date.toLocaleString('default', { month: 'long' })} ${
+            date.getDate() - date.getDay()
+          }`;
+
     return (
       <Header className={this.props.className}>
         <Title>

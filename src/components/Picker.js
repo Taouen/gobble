@@ -110,9 +110,19 @@ class Picker extends React.Component {
   };
 
   saveBox = () => {
-    if (window.confirm('Save box and close recipe picker?')) {
-      localStorage.setItem('box', JSON.stringify(this.state.box));
-      this.props.history.push('/');
+    const { box } = this.state;
+
+    if (box.length >= 2 && box.length <= 6) {
+      if (window.confirm('Save box and close recipe picker?')) {
+        localStorage.setItem('box', JSON.stringify(this.state.box));
+        this.props.history.push('/');
+      }
+    } else {
+      alert(
+        `Please add at least ${
+          2 - box.length
+        } more recipe(s) to your box before saving.`
+      );
     }
   };
 

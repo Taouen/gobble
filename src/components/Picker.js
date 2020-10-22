@@ -129,8 +129,8 @@ class Picker extends React.Component {
   checkout = () => {
     const { box } = this.state;
 
-    if (box.length === 0) {
-      alert('Add at least 1 recipe to your box.');
+    if (box.length < 2) {
+      alert(`Add at least ${2 - box.length} more recipe(s) to your box.`);
     } else if (window.confirm('Ready to checkout?')) {
       localStorage.clear();
       this.props.history.push('/checkout');
